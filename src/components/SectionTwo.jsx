@@ -1,8 +1,10 @@
 function SectionTwo() {
   return (
-    <section style={{ backgroundColor: '#C4D600', color: '#fff', padding: '20px', textAlign: 'center' }}>
-      <h2>Seção 2</h2>
-      <p>WORLD</p>
+    <section className="bg-greenLight text-textDark">
+      <h2 className="text-3xl font-bold">Visão</h2>
+      <p>
+        Ser referência em Educação Financeira no Brasil e no mundo por meio da Metodologia DSOP.
+      </p>
     </section>
   );
 }
