@@ -1,7 +1,8 @@
 function Header() {
   return (
-    <header style={{ backgroundColor: '#FE5000', color: '#fff', padding: '20px', textAlign: 'center' }}>
-      <h1>DSOP - Educação Financeira</h1>
+    <header>
+      <h1 className="text-4xl font-bold">DSOP - Educação Financeira</h1>
+      <p className="text-lg">Respeitando o dinheiro e realizando sonhos</p>
     </header>
   );
 }

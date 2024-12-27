@@ -1,136 +1,20 @@
-/* === Estilos Globais === */
-:root {
-  /* Tipografia */
-  font-family: 'Tahoma', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  /* Cores Primárias DSOP */
-  --color-orange: #FE5000; /* PANTONE 021 C */
-  --color-green-dark: #43B02A; /* PANTONE 361 C */
-  --color-green-light: #C4D600; /* PANTONE 382 C */
-  --color-gray: #A2AAAD; /* PANTONE 422 C */
-  --color-text-light: #ffffff;
-  --color-text-dark: #213547;
-
-  /* Fundo e Tema */
-  color-scheme: light dark;
-  color: var(--color-text-light);
-  background-color: var(--color-gray);
-
-  /* Melhorias de Renderização */
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* === Reset de Estilos === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* === Links === */
-a {
-  font-weight: 500;
-  color: var(--color-green-dark);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--color-green-light);
-}
-
-/* === Corpo da Página === */
+/* Estilização Global */
 body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: var(--color-gray);
+  @apply bg-gray text-textLight font-sans;
 }
 
-/* === Header === */
 header {
-  background-color: var(--color-orange);
-  color: var(--color-text-light);
-  text-align: center;
-  padding: 20px;
+  @apply bg-orange text-textLight text-center p-4;
 }
 
-/* === Seções === */
 section {
-  padding: 40px;
-  text-align: center;
-}
-section:nth-child(even) {
-  background-color: var(--color-green-dark);
-  color: var(--color-text-light);
-}
-section:nth-child(odd) {
-  background-color: var(--color-green-light);
-  color: var(--color-text-dark);
+  @apply p-8 text-center;
 }
 
-/* === Footer === */
 footer {
-  background-color: var(--color-gray);
-  color: var(--color-text-light);
-  text-align: center;
-  padding: 20px;
-  margin-top: auto;
-}
-
-/* === Títulos === */
-h1 {
-  font-size: 3.2em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-h2 {
-  font-size: 2.4em;
-  margin-bottom: 0.3em;
-}
-
-/* === Parágrafos === */
-p {
-  font-size: 1.2em;
-  margin-bottom: 1em;
-}
-
-/* === Botões === */
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--color-orange);
-  color: var(--color-text-light);
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: var(--color-green-light);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* === Modo Claro === */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--color-text-dark);
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: var(--color-orange);
-  }
-  button {
-    background-color: var(--color-green-light);
-  }
+  @apply bg-gray text-textLight text-center p-4 mt-auto;
 }
