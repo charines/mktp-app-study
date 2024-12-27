@@ -1,20 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Estilização Global */
-body {
-  @apply bg-gray text-textLight font-sans;
-}
-
-header {
-  @apply bg-orange text-textLight text-center p-4;
-}
-
-section {
-  @apply p-8 text-center;
-}
-
-footer {
-  @apply bg-gray text-textLight text-center p-4 mt-auto;
-}
