@@ -48,7 +48,7 @@ function Formulario({ onCalcular }) {
           <label className="input input-bordered flex items-center gap-2">Juros          
           <input
             type="number"
-            placeholder="Juros Mensais (%)"
+            placeholder="Juros Mensais  (%)"
             value={jurosMensal}
             onChange={(e) => setJurosMensal(e.target.value)}
             className="grow"
