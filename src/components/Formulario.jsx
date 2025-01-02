@@ -25,42 +25,55 @@ function Formulario({ onCalcular }) {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-2xl font-bold text-primary mb-4">Preencha os Dados do IPVA</h2>
         <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
-        <label className="input input-bordered flex items-center gap-2"> IPVA R$ 
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Valor do IPVA R$</span>
+          </div> 
           <input
             type="number"
             placeholder="digite aqui o valor do ipva"
             value={valorIPVA}
             onChange={(e) => setValorIPVA(e.target.value)}
-            className="grow"
+            className="input input-bordered w-full max-w-xs"
             required
           />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">Desconto
+        </label>
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Desconto em %</span>
+          </div> 
           <input
             type="number"
             placeholder="Desconto à Vista (%)"
             value={descontoVista}
             onChange={(e) => setDescontoVista(e.target.value)}
-            className="grow"
+            className="input input-bordered w-full max-w-xs"
             required
           />
-          </label>
-          <label className="input input-bordered flex items-center gap-2">Juros          
+        </label>
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Juros mensais em %</span>
+          </div> 
           <input
             type="number"
             placeholder="Juros Mensais  (%)"
             value={jurosMensal}
             onChange={(e) => setJurosMensal(e.target.value)}
-            className="grow"
+            className="input input-bordered w-full max-w-xs"
             required
-          /></label>
-          <label className="input input-bordered flex items-center gap-2">Parcelas
+          />
+        </label>
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Quantidade de parcelas</span>
+          </div> 
           <input
             type="number"
             placeholder="Quantidade de Parcelas"
             value={parcelas}
             onChange={(e) => setParcelas(e.target.value)}
-            className="grow"
+            className="input input-bordered w-full max-w-xs"
             required
           /></label>
           <button type="submit" className="btn btn-primary w-full">
