@@ -3,26 +3,98 @@ import { calcularPerfil } from '../utils/calculoPerfil';
 function Resultado({ answers }) {
   const perfil = calcularPerfil(Object.values(answers));
 
-  const perfisDescricao = {
-    PO: 'Você valoriza segurança, estabilidade e previsibilidade. Suas decisões são cuidadosas e bem pensadas, buscando minimizar riscos e garantir um ambiente controlado. Seu foco está em construir uma base sólida e confiável para alcançar resultados consistentes ao longo do tempo.',
-    PE: 'Você é um estrategista nato, com habilidade para liderar e inspirar equipes. Seu foco está em encontrar oportunidades, promover colaboração e guiar os outros com uma visão clara e organizada. Sua capacidade de equilibrar planejamento e execução faz de você uma peça essencial em qualquer projeto.',
-    AT: 'Você é movido pela ousadia e coragem. Desafios e incertezas não te assustam, mas te motivam. Sua determinação permite superar obstáculos rapidamente, tomando decisões com agilidade e confiança. Você enxerga o potencial em cada situação e não teme arriscar para alcançar grandes resultados.',
-    AI: 'Você é um verdadeiro visionário, capaz de enxergar oportunidades onde outros veem limitações. Sua criatividade e inovação moldam suas decisões, e você não teme seguir caminhos pouco convencionais. Obstáculos são encarados como oportunidades de crescimento, e sua capacidade de pensar fora da caixa é inspiradora.',
+  const perfisEmpreendedor = {
+    PO: {
+      titulo: 'Passivo Operacional (PO)',
+      descricao: 'Visa segurança, conforto e estabilidade, prefere não correr riscos, ousa pouco, toma decisões por necessidade. É o que exerce atividades operacionais com responsabilidades limitadas, com direcionamento de líder e visa renda recorrente.',
+    },
+    PE: {
+      titulo: 'Passivo Estrategista (PE)',
+      descricao: 'Visa segurança, conforto e estabilidade, prefere não correr riscos, ousa pouco, toma decisões por necessidade. Líder de atividades, trabalha e desenvolve equipes e pode ser um bom técnico. Busca oportunidades.',
+    },
+    AT: {
+      titulo: 'Ativo Terceiros (AT)',
+      descricao: 'Não tem medo de perder. Ousado, corajoso, não disciplinado e resiliente. Obstáculos e rupturas o fortalecem, toma decisões pelo impulso, sem analisar consequências. Busca baixo risco do negócio, resultados consolidados, limites controlados. Influenciado pela tendência do mercado.',
+    },
+    AI: {
+      titulo: 'Ativo Idealizador (AI)',
+      descricao: 'Não tem medo de perder. Ousado, corajoso, não disciplinado e resiliente. Obstáculos e rupturas o fortalecem, toma decisões pelo impulso, sem analisar consequências. Inova em atividades tradicionais ou não. Ousa, independente dos riscos e recursos financeiros, visionário, enxerga o óbvio por um outro ângulo. Obstáculos são motivacionais e busca diferentes para um mesmo fim, oportunista.',
+    },
   };
 
+  const competencias = {
+    Liderança: ['PE', 'AI'],
+    Autopersuasão: ['PE', 'AI'],
+    Sonhos: ['PO', 'PE', 'AT', 'AI'],
+    Resiliência: ['PE', 'AT', 'AI'],
+    Confiança: ['AT', 'AI'],
+    'Eficiência e Eficácia': ['PE', 'AI'],
+    'Independência Financeira': ['PO', 'PE', 'AT', 'AI'],
+    Otimismo: ['PE', 'AI'],
+  };
+
+  // Filtra as competências relacionadas ao perfil dominante
+  const competenciasAssociadas = Object.entries(competencias)
+    .filter(([, perfis]) => perfis.includes(perfil))
+    .map(([comp]) => comp);
+
+  // Função para calcular a quantidade de cada perfil
+  const calcularQuantidadePorPerfil = () => {
+    const contagem = {};
+    Object.values(answers).forEach((perfil) => {
+      contagem[perfil] = (contagem[perfil] || 0) + 1;
+    });
+    return contagem;
+  };
+
+  const quantidadePorPerfil = calcularQuantidadePorPerfil();
+
   return (
-    <section className="py-8 px-4 md:px-8 text-center max-w-3xl mx-auto">
+    <section className="py-8 px-4 md:px-8 text-center max-w-3xl mx-auto bg-black text-white">
+      {/* Título */}
       <h2 className="text-xl md:text-2xl font-bold mb-4">Seu Perfil Dominante</h2>
-      <p className="text-base md:text-lg font-semibold mb-2">
-        <span className="text-gray-600">Perfil:</span> <span>{perfil}</span>
-      </p>
-      <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-        {perfisDescricao[perfil]}
-      </p>
+      
+      {/* Perfil de Empreendedor */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2 text-green-400">
+          {perfisEmpreendedor[perfil]?.titulo || 'Perfil não identificado'}
+        </h3>
+        <p className="text-sm md:text-base leading-relaxed text-gray-300">
+          {perfisEmpreendedor[perfil]?.descricao || 'Descrição não disponível.'}
+        </p>
+      </div>
+
+      {/* Competências */}
+      <div className="mt-6 text-left mx-auto max-w-md bg-gray-800 p-4 rounded-lg shadow-md">
+        <h3 className="text-lg font-semibold mb-2 text-center">Competências Associadas:</h3>
+        <ul className="space-y-1">
+          {competenciasAssociadas.map((comp) => (
+            <li key={comp} className="flex justify-between border-b border-gray-700 py-1">
+              <span className="font-medium text-gray-200">{comp}:</span>
+              <span className="font-bold text-green-400">✔</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Quantidade por Perfil - Invisível */}
+      <div className="mt-8 text-left mx-auto max-w-md bg-gray-800 p-4 rounded-lg shadow-md hidden">
+        <h3 className="text-lg font-semibold mb-2 text-center">Distribuição de Perfis:</h3>
+        <ul className="space-y-1">
+          {Object.entries(quantidadePorPerfil).map(([key, value]) => (
+            <li key={key} className="flex justify-between border-b border-gray-700 py-1">
+              <span className="font-medium text-gray-200">{key}:</span>
+              <span className="font-bold text-green-400">{value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Botão de Refazer */}
       <div className="flex justify-center mt-6">
         <button
           onClick={() => window.location.reload()}
-          className="btn btn-primary w-full md:w-auto px-4 py-2 rounded-md transition-all"
+          className="btn btn-primary w-full md:w-auto px-4 py-2 rounded-md bg-green-500 hover:bg-green-600 text-black font-bold transition-all"
         >
           Refazer Questionário
         </button>
