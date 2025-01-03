@@ -1,13 +1,40 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function Questionario({ questions, onAnswersSubmitted }) {
   const [answers, setAnswers] = useState({});
+  const [error, setError] = useState(null); // Estado para armazenar mensagens de erro
+  const questionRefs = useRef([]);
 
-  const handleAnswerChange = (grupo, resposta) => {
+  // Manipula a mudança de resposta
+  const handleAnswerChange = (grupo, resposta, index) => {
     setAnswers((prev) => ({ ...prev, [grupo]: resposta }));
+    setError(null); // Remove mensagem de erro após uma resposta válida
+
+    // Ir para a próxima pergunta (se existir)
+    const nextIndex = index + 1;
+    if (questionRefs.current[nextIndex]) {
+      questionRefs.current[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
+  // Valida se todas as perguntas foram respondidas
+  const validateAnswers = () => {
+    for (const question of questions) {
+      if (!answers[question.grupo]) {
+        return question.pergunta; // Retorna a pergunta não respondida
+      }
+    }
+    return null;
+  };
+
+  // Manipula o envio das respostas
   const handleSubmit = () => {
+    const invalidQuestion = validateAnswers();
+    if (invalidQuestion) {
+      setError(`Por favor, responda à pergunta: "${invalidQuestion}"`);
+      return;
+    }
+
     onAnswersSubmitted(answers);
   };
 
@@ -18,7 +45,11 @@ function Questionario({ questions, onAnswersSubmitted }) {
       </h2>
       <div className="space-y-8">
         {questions.map((question, index) => (
-          <div key={question.grupo} className="mb-6 md:mb-8">
+          <div
+            key={question.grupo}
+            className="mb-6 md:mb-8"
+            ref={(el) => (questionRefs.current[index] = el)}
+          >
             <h3 className="text-lg md:text-xl font-semibold mb-4 text-center">
               {question.pergunta}
             </h3>
@@ -31,18 +62,27 @@ function Questionario({ questions, onAnswersSubmitted }) {
                       ? 'bg-green-500 text-black'
                       : ''
                   }`}
-                  onClick={() => handleAnswerChange(question.grupo, resposta.perfil)}
+                  onClick={() => handleAnswerChange(question.grupo, resposta.perfil, index)}
                 >
                   <span className="font-bold text-green-400 mr-2">
                     {String.fromCharCode(65 + i)}
                   </span>
-                  {resposta.texto}
+                  {resposta.texto} / {resposta.perfil}
                 </li>
               ))}
             </ul>
           </div>
         ))}
       </div>
+
+      {/* Mensagem de Erro */}
+      {error && (
+        <div className="mt-4 text-center text-red-500 font-semibold">
+          {error}
+        </div>
+      )}
+
+      {/* Botão de Envio */}
       <div className="flex justify-center mt-8">
         <button
           onClick={handleSubmit}
