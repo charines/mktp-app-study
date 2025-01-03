@@ -67,7 +67,7 @@ function Questionario({ questions, onAnswersSubmitted }) {
                   <span className="font-bold text-green-400 mr-2">
                     {String.fromCharCode(65 + i)}
                   </span>
-                  {resposta.texto} / {resposta.perfil}
+                  {resposta.texto}
                 </li>
               ))}
             </ul>
