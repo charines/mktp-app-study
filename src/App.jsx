@@ -1,31 +1,55 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Secao1 from './components/Secao1'
-import Formulario from './components/Formulario'
-import Resultado from './components/Resultado'
+import { useState } from 'react';
+import Secao1 from './components/Secao1';
+import QuestionLoader from './components/QuestionLoader';
+import Questionario from './components/Questionario';
+import Modal from './components/Modal';
+import Resultado from './components/Resultado';
+
 function App() {
-  const [socio, setSocio] = useState('')
-  const [dados, setDados] = useState(null);
+  const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState(null); // Respostas do Questionário
+  const [isModalVisible, setModalVisible] = useState(false); // Controle do Modal
+  const [userInfo, setUserInfo] = useState(null); // Dados do Usuário
+  const [isQuestionarioVisible, setQuestionarioVisible] = useState(true); // Controle do Questionário
 
-  useEffect(() => {
-    // Captura os parâmetros da URL
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString)
-    const socioParam = urlParams.get('socio')
+  const handleAnswersSubmitted = (ans) => {
+    setAnswers(ans); // Define as respostas
+    setModalVisible(true); // Abre o modal
+  };
 
-    if (socioParam) {
-      setSocio(socioParam)
-    }
-  }, [])
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleModalSubmit = (info) => {
+    setUserInfo(info); // Define informações do usuário
+    setModalVisible(false); // Fecha o modal
+    setQuestionarioVisible(false); // Esconde o Questionário
+  };
 
   return (
-    <>
-      <Secao1 />
-      <Formulario onCalcular={setDados} />
-      {dados && <Resultado dados={dados} />}
-
-    </>
-  )
+    <div>
+      <Secao1 onShowQuestionnaire={() => setQuestionarioVisible(true)} />
+      <QuestionLoader onQuestionsLoaded={setQuestions} />
+      
+      {questions.length > 0 && isQuestionarioVisible && (
+        <Questionario 
+          questions={questions} 
+          onAnswersSubmitted={handleAnswersSubmitted} 
+        />
+      )}
+      
+      <Modal 
+        isVisible={isModalVisible} 
+        onClose={handleCloseModal} 
+        onSubmit={handleModalSubmit} 
+      />
+      
+      {userInfo && answers && !isQuestionarioVisible && (
+        <Resultado answers={answers} />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;

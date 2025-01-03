@@ -1,0 +1,82 @@
+[
+  {
+    "grupo": "autopersuasao",
+    "pergunta": "Como você geralmente reage a situações de estresse?",
+    "respostas": [
+      { "texto": "Fico calmo e tento resolver o problema de maneira lógica.", "perfil": "AT" },
+      { "texto": "Busco apoio emocional de amigos ou familiares.", "perfil": "PE" },
+      { "texto": "Fico ansioso, mas tento esconder meus sentimentos.", "perfil": "PO" },
+      { "texto": "Tendo a ficar irritado e expressar minha frustração.", "perfil": "AI" }
+    ]
+  },
+  {
+    "grupo": "lideranca",
+    "pergunta": "Você, como líder, adapta seu estilo de liderança às diferentes situações?",
+    "respostas": [
+      { "texto": "Mantendo consistência no estilo de liderança.", "perfil": "AT" },
+      { "texto": "Ajustando-se conforme as necessidades da equipe/tarefa.", "perfil": "AI" },
+      { "texto": "Definindo um estilo de liderança único para todas as situações.", "perfil": "PE" },
+      { "texto": "Seguindo as práticas tradicionais de liderança.", "perfil": "PO" }
+    ]
+  },
+  {
+    "grupo": "resiliencia",
+    "pergunta": "Como você lida com mudanças inesperadas?",
+    "respostas": [
+      { "texto": "Adapto-me rapidamente e vejo oportunidades nas mudanças.", "perfil": "AI" },
+      { "texto": "Fico um pouco desconfortável, mas eventualmente me ajusto.", "perfil": "AT" },
+      { "texto": "Prefiro rotina e tenho dificuldade em lidar com mudanças.", "perfil": "PE" },
+      { "texto": "Fico estressado e resistente a mudanças.", "perfil": "PO" }
+    ]
+  },
+  {
+    "grupo": "otimismo",
+    "pergunta": "Ao enfrentar um desafio, qual a sua abordagem principal?",
+    "respostas": [
+      { "texto": "Preocupo-me imediatamente com o pior cenário.", "perfil": "PO" },
+      { "texto": "Acredito que posso superar qualquer desafio.", "perfil": "AI" },
+      { "texto": "Avalio a situação de forma realista e planejo minha abordagem.", "perfil": "AT" },
+      { "texto": "Dependo de outros para lidar com desafios.", "perfil": "PE" }
+    ]
+  },
+  {
+    "grupo": "confianca",
+    "pergunta": "Como você lida com críticas?",
+    "respostas": [
+      { "texto": "Aceito críticas construtivas e tento melhorar.", "perfil": "AI" },
+      { "texto": "Fico um pouco chateado, mas tento aprender com a experiência.", "perfil": "PE" },
+      { "texto": "Levo críticas muito a sério e posso ficar abalado.", "perfil": "AT" },
+      { "texto": "Fico na defensiva e tenho dificuldade em aceitar críticas.", "perfil": "PO" }
+    ]
+  },
+  {
+    "grupo": "sonhos",
+    "pergunta": "Qual é a importância de seus sonhos em sua tomada de decisões diárias?",
+    "respostas": [
+      { "texto": "Meus sonhos influenciam fortemente minhas decisões.", "perfil": "AI" },
+      { "texto": "Considero meus sonhos, mas não são determinantes.", "perfil": "AT" },
+      { "texto": "Raramente penso nos meus sonhos ao decidir.", "perfil": "PO" },
+      { "texto": "Não tenho sonhos específicos que impactem minhas decisões.", "perfil": "PE" }
+    ]
+  },
+  {
+    "grupo": "eficiencia_e_eficacia",
+    "pergunta": "Como você lida com prazos apertados e alta demanda de trabalho?",
+    "respostas": [
+      { "texto": "Fico estressado e busco completar as tarefas o mais rápido possível.", "perfil": "AT" },
+      { "texto": "Priorizo tarefas e me concentro na qualidade, mesmo com prazos apertados.", "perfil": "PO" },
+      { "texto": "Busco maneiras de reduzir a quantidade de trabalho necessário.", "perfil": "PE" },
+      { "texto": "Delego tarefas para evitar sobrecarga.", "perfil": "AI" }
+    ]
+  },
+  {
+    "grupo": "independencia_financeira",
+    "pergunta": "Como você definiria seu atual nível de independência financeira?",
+    "respostas": [
+      { "texto": "Dependo totalmente de outras fontes financeiras.", "perfil": "PO" },
+      { "texto": "Tenho alguma independência, mas ainda dependo em parte de outros.", "perfil": "PE" },
+      { "texto": "Sou financeiramente independente em grande parte.", "perfil": "AI" },
+      { "texto": "Alcancei total independência financeira.", "perfil": "AT" }
+    ]
+  }
+]
