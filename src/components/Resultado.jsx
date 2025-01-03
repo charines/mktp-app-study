@@ -11,13 +11,24 @@ function Resultado({ answers }) {
   };
 
   return (
-    <section className="py-8 text-center">
-      <h2 className="text-2xl font-bold mb-4">Seu Perfil Dominante</h2>
-      <p className="text-lg font-semibold">Perfil: {perfil}</p>
-      <p className="mt-4 text-gray-700">{perfisDescricao[perfil]}</p>
+    <section className="py-8 px-4 md:px-8 text-center max-w-3xl mx-auto">
+      <h2 className="text-xl md:text-2xl font-bold mb-4">Seu Perfil Dominante</h2>
+      <p className="text-base md:text-lg font-semibold mb-2">
+        <span className="text-gray-600">Perfil:</span> <span>{perfil}</span>
+      </p>
+      <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
+        {perfisDescricao[perfil]}
+      </p>
+      <div className="flex justify-center mt-6">
+        <button
+          onClick={() => window.location.reload()}
+          className="btn btn-primary w-full md:w-auto px-4 py-2 rounded-md transition-all"
+        >
+          Refazer Questionário
+        </button>
+      </div>
     </section>
   );
 }
 
 export default Resultado;
-
