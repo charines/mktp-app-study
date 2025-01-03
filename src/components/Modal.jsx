@@ -6,13 +6,23 @@ function Modal({ isVisible, onClose, onSubmit }) {
   const [telefone, setTelefone] = useState('');
   const [errors, setErrors] = useState({ nome: false, email: false, telefone: false });
 
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validateTelefone = (telefone) => {
+    return /^\d{10,11}$/.test(telefone); // Valida telefone com 10 ou 11 dígitos
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newErrors = {
       nome: !nome,
-      email: !email,
-      telefone: !telefone,
+      email: !email || !validateEmail(email),
+      telefone: !telefone || !validateTelefone(telefone),
     };
+
     setErrors(newErrors);
 
     const hasErrors = Object.values(newErrors).some((error) => error);
@@ -25,11 +35,14 @@ function Modal({ isVisible, onClose, onSubmit }) {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md z-50">
-        <h2 className="text-2xl font-bold mb-6 text-center">Preencha suas informações</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+      <div className="bg-white p-6 md:p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">
+          Preencha suas informações
+        </h2>
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
+          {/* Campo Nome */}
           <label className="form-control w-full mb-4">
             <div className="label">
               <span className="label-text">Nome</span>
@@ -44,6 +57,7 @@ function Modal({ isVisible, onClose, onSubmit }) {
             {errors.nome && <span className="text-red-500 text-sm">O campo Nome é obrigatório.</span>}
           </label>
           
+          {/* Campo E-mail */}
           <label className="form-control w-full mb-4">
             <div className="label">
               <span className="label-text">E-mail</span>
@@ -55,33 +69,35 @@ function Modal({ isVisible, onClose, onSubmit }) {
               onChange={(e) => setEmail(e.target.value)}
               className={`input input-bordered w-full ${errors.email ? 'border-red-500 bg-red-100' : ''}`} 
             />
-            {errors.email && <span className="text-red-500 text-sm">O campo E-mail é obrigatório.</span>}
+            {errors.email && <span className="text-red-500 text-sm">Digite um e-mail válido.</span>}
           </label>
           
+          {/* Campo Telefone */}
           <label className="form-control w-full mb-6">
             <div className="label">
               <span className="label-text">Telefone</span>
             </div>
             <input 
               type="tel" 
-              placeholder="Digite seu telefone" 
+              placeholder="Digite seu telefone (Apenas números)" 
               value={telefone} 
               onChange={(e) => setTelefone(e.target.value)}
               className={`input input-bordered w-full ${errors.telefone ? 'border-red-500 bg-red-100' : ''}`} 
             />
-            {errors.telefone && <span className="text-red-500 text-sm">O campo Telefone é obrigatório.</span>}
+            {errors.telefone && <span className="text-red-500 text-sm">Digite um telefone válido (10 ou 11 dígitos).</span>}
           </label>
           
-          <div className="flex justify-end space-x-4">
+          {/* Botões */}
+          <div className="flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-4">
             <button 
               type="button"
               onClick={onClose} 
-              className="btn btn-secondary">
+              className="btn btn-secondary w-full md:w-auto">
               Fechar
             </button>
             <button 
               type="submit"
-              className="btn btn-primary">
+              className="btn btn-primary w-full md:w-auto">
               Enviar
             </button>
           </div>
