@@ -65,7 +65,7 @@ function AnaliseInvestimento({
       {/* Comparação Final */}
       <section className="mb-6 space-y-4">
         <p>
-          - Se você optar por pagar o IPVA <strong>parcelado</strong>, investirá inicialmente <strong>R$ {((parcelasNum - 1) * parcelaMensalNum).toFixed(2)}</strong>, deduzindo mensalmente o valor da parcela de <strong>R$ {parcelaMensalNum.toFixed(2)}</strong> durante <strong>{parcelasNum - 1}</strong> meses. <br/>Após quitar todas as parcelas, você terá um saldo final (incluindo os juros recebidos) de <strong>R$ {jurosTotaisAcumuladosNum.toFixed(2)}</strong>.
+          - Se você optar por pagar o IPVA <strong>parcelado</strong>, investirá inicialmente <strong>R$ {((parcelasNum - 1) * parcelaMensalNum).toFixed(2)}</strong>, deduzindo mensalmente o valor da parcela de <strong>R$ {parcelaMensalNum.toFixed(2)}</strong> durante <strong>{parcelasNum - 1}</strong> meses. <br/>Após quitar todas as parcelas, aplicando esse valor no mercado financeiro com uma taxa de juros mensal de <strong>{jurosMensalNum.toFixed(2)}%</strong>, você terá um saldo final (incluindo os juros recebidos) de <strong>R$ {jurosTotaisAcumuladosNum.toFixed(2)}</strong>.
         </p>
 
         <p>
