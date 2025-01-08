@@ -1,54 +1,58 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import './App.css';
 import Secao1 from './components/Secao1';
-import QuestionLoader from './components/QuestionLoader';
-import Questionario from './components/Questionario';
-import Modal from './components/Modal';
+import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
 
 function App() {
-  const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState(null); // Respostas do Questionário
-  const [isModalVisible, setModalVisible] = useState(false); // Controle do Modal
-  const [userInfo, setUserInfo] = useState(null); // Dados do Usuário
-  const [isQuestionarioVisible, setQuestionarioVisible] = useState(true); // Controle do Questionário
+  const [dados, setDados] = useState(null);
+  const [mostrarResultado, setMostrarResultado] = useState(false);
+  const [parametroShowAnswer, setParametroShowAnswer] = useState(false);
 
-  const handleAnswersSubmitted = (ans) => {
-    setAnswers(ans); // Define as respostas
-    setModalVisible(true); // Abre o modal
+  // Captura parâmetros da URL
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const showAnswer = urlParams.get('show');
+
+    if (showAnswer === 'answer') {
+      setParametroShowAnswer(true);
+      carregarDadosDoStorage();
+    }
+  }, []);
+
+  // Carregar dados do LocalStorage
+  const carregarDadosDoStorage = () => {
+    const valorIPVA = parseFloat(localStorage.getItem('valorIPVA')) || 0;
+    const descontoVista = parseFloat(localStorage.getItem('descontoVista')) || 0;
+    const jurosMensal = parseFloat(localStorage.getItem('jurosMensal')) || 0;
+    const parcelas = parseInt(localStorage.getItem('parcelas'), 10) || 0;
+
+    if (valorIPVA && descontoVista && jurosMensal && parcelas) {
+      setDados({
+        valorIPVA,
+        descontoVista,
+        jurosMensal,
+        parcelas,
+      });
+      setMostrarResultado(true);
+    }
   };
 
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
-
-  const handleModalSubmit = (info) => {
-    setUserInfo(info); // Define informações do usuário
-    setModalVisible(false); // Fecha o modal
-    setQuestionarioVisible(false); // Esconde o Questionário
+  // Atualiza os dados quando o formulário salva no estado
+  const handleCalcular = (novosDados) => {
+    setDados(novosDados);
+    setMostrarResultado(true);
   };
 
   return (
-    <div>
-      <Secao1 onShowQuestionnaire={() => setQuestionarioVisible(true)} />
-      <QuestionLoader onQuestionsLoaded={setQuestions} />
-      
-      {questions.length > 0 && isQuestionarioVisible && (
-        <Questionario 
-          questions={questions} 
-          onAnswersSubmitted={handleAnswersSubmitted} 
-        />
+    <>
+      <Secao1 />
+      <Formulario onCalcular={handleCalcular} />
+      {parametroShowAnswer && mostrarResultado && dados && (
+        <Resultado dados={dados} />
       )}
-      
-      <Modal 
-        isVisible={isModalVisible} 
-        onClose={handleCloseModal} 
-        onSubmit={handleModalSubmit} 
-      />
-      
-      {userInfo && answers && !isQuestionarioVisible && (
-        <Resultado answers={answers} />
-      )}
-    </div>
+    </>
   );
 }
 
