@@ -94,7 +94,7 @@ function ModalForm({ onClose }) {
       localStorage.setItem('form_codigoPais', codigoPais.value);
 
       // Redireciona para o resultado
-      window.location.href = 'http://localhost:5173/?show=answer';
+      window.location.href = './?show=answer';
     } else {
       alert('Por favor, preencha todos os campos!');
     }
