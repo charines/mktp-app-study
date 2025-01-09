@@ -5,7 +5,7 @@ function Formulario({ onCalcular }) {
   const [valorIPVA, setValorIPVA] = useState('');
   const [descontoVista, setDescontoVista] = useState('');
   const [jurosMensal, setJurosMensal] = useState('');
-  const [parcelas, setParcelas] = useState(5);
+  const [parcelas, setParcelas] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   // Carregar valores do LocalStorage apenas uma vez ao montar o componente
@@ -18,7 +18,7 @@ function Formulario({ onCalcular }) {
     setValorIPVA(storedValorIPVA ? parseFloat(storedValorIPVA).toFixed(2) : '');
     setDescontoVista(storedDescontoVista ? parseFloat(storedDescontoVista).toFixed(2) : '');
     setJurosMensal(storedJurosMensal ? parseFloat(storedJurosMensal).toFixed(2) : '');
-    setParcelas(storedParcelas ? parseInt(storedParcelas, 10) : 5);
+    setParcelas(storedParcelas ? parseInt(storedParcelas, 10) : '');
   }, []);
 
   // Atualizar LocalStorage e chamar o cálculo quando houver alterações nos valores
@@ -112,9 +112,9 @@ function Formulario({ onCalcular }) {
           <button
             type="button"
             onClick={openModal}
-            className="btn btn-primary w-full mt-4"
+            className="btn btn-secondary w-full mt-4"
           >
-            Abrir Modal
+            Realizar Simulação
           </button>
         </form>
 

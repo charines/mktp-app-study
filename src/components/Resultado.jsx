@@ -29,7 +29,7 @@ function Resultado({ dados }) {
   return (
     <section className="py-8 bg-base-100">
       <div className="container mx-auto px-4">
-        <div className="mt-6">
+        <div className="mt-6" id='resultado'>
           <AnaliseInvestimento 
           valorIPVA={dados.valorIPVA}
           descontoVista={dados.descontoVista}

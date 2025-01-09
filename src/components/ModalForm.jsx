@@ -94,7 +94,7 @@ function ModalForm({ onClose }) {
       localStorage.setItem('form_codigoPais', codigoPais.value);
 
       // Redireciona para o resultado
-      window.location.href = './?show=answer';
+      window.location.href = './?show=answer#resultado';
     } else {
       alert('Por favor, preencha todos os campos!');
     }
@@ -151,13 +151,13 @@ function ModalForm({ onClose }) {
           </div>
 
           {/* Botões */}
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="btn btn-secondary w-full">
             Enviar
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="btn btn-secondary w-full mt-2"
+            className="btn btn-primary w-full mt-2"
           >
             Fechar
           </button>
