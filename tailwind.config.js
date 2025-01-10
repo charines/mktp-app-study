@@ -12,6 +12,8 @@ export default {
         accent: '#C4D600', // Verde Claro
         neutral: '#A2AAAD', // Cinza Neutro
         base: '#ffffff', // Fundo principal
+        "gray-50": "#C1C1C1",
+        "orange-50": "#FFEFEB"
       },
       fontFamily: {
         primary: ['Myriad MM', 'Tahoma', 'sans-serif'],
@@ -35,6 +37,8 @@ export default {
           "success": "#36D399",
           "warning": "#FBBD23",
           "error": "#F87272",
+          "gray-50": "#C1C1C1",
+          "orange-50": "#FFEFEB"
         },
       },
       "dark",    // Tema escuro padrão do daisyUI

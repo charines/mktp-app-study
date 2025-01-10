@@ -1,6 +1,7 @@
 import React from "react";
 import LanguageSelector from "./LanguageSelector";
 import SearchInput from "./SearchInput";
+import LogoDsop from "../../assets/img/logo-dsop.webp";
 
 function HeaderDSOP(){
   return (
@@ -44,7 +45,113 @@ function HeaderDSOP(){
         </div>
       </section>
 
-      <nav></nav>
+      <nav className="max-w-screen-xl mx-auto flex items-center justify-between gap-0 md:gap-5 lg:gap-48 relative">
+        <a href="/" className="header__menu__nav__logo">
+          <img src={LogoDsop} alt="logo dsop" height="58" width="204" />
+        </a>
+
+        <div>
+          <button className="mt-5 mb-4 bg-transparent block sm:hidden" id="menu__button" aria-label="botão menu">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="40" height="40" viewBox="0 0 24 24" className="pointer-events-none fill-white"
+            >
+              <path className="path_conteudo" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z">
+              </path>
+            </svg>
+          </button>
+
+          <ul tabIndex={0} className="menu menu-sm flex-row dropdown-content z-[1] p-0">
+            <li>
+              <details>
+                <summary className="py-7 px-4 text-base font-semibold">Sobre</summary>
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg">
+                  <li className="menu-title mb-2 text-primary text-xl">Sobre</li>
+                  <li>
+                    <a href="https://dsop.com.br/alumni" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Alumni</a>
+                  </li>
+                  <li>
+                    <a href="https://dsop.com.br/sobre-a-dsop" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Quem Somos</a>
+                  </li>
+                  <li>
+                    <a href="https://dsop.com.br/politica-qualidade" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Política de Qualidade</a>
+                  </li>
+                  <li>
+                    <a href="https://dsop.com.br/contato" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Contato</a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary className="py-7 px-4 text-base font-semibold">Contratar</summary>
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 max-w-2xl right-0 top-full rounded-lg">
+                  <li className="menu-title mb-2 text-primary text-xl">Contratar</li>
+                  <div role="tablist" className="tabs tabs-bordered bg-transparent">
+                   <div className="flex gap-20">
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Para você" defaultChecked />
+                      <div role="tabpanel" className="tab-content">
+                        Tab content 1
+                      </div>
+                   </div>
+
+                    <div className="flex gap-20">
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Para Escolas" />
+                      <div role="tabpanel" className="tab-content">
+                        Tab content 2
+                      </div>
+                    </div>
+
+                    <div className="flex gap-20">
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Para Empresas" />
+                      <div role="tabpanel" className="tab-content">
+                        Tab content 3
+                      </div>
+                    </div>
+
+                    <div className="flex gap-20">
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Catálogos" />
+                      <div role="tabpanel" className="tab-content">
+                        Tab content 4
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary className="py-7 px-4 text-base font-semibold">Franquias</summary>
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg">
+                  <li className="menu-title mb-2 text-primary text-xl">Franquias</li>
+                  <li>
+                    <a href="https://dsop.com.br/franquia" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Sobre a Franquia</a>
+                  </li>
+                  <li>
+                    <a href="https://dsop.com.br/socios-executivos/" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Sócios-Executivos</a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li className="py-7 px-4"><a href="https://dsop.com.br/eventos" className="p-0 text-base font-semibold">Eventos</a></li>
+            <li className="py-7 px-4"><a href="https://dsop.com.br/blog" className="p-0 text-base font-semibold">Blog</a></li>
+            <li>
+              <details>
+                <summary className="py-7 px-4 text-base font-semibold">Lojas</summary>
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg">
+                  <li className="menu-title mb-2 text-primary text-xl">Lojas</li>
+                  <li>
+                    <a href="https://www.loopi.toys/" target="_blank" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Loopi Toys</a>
+                  </li>
+                  <li>
+                    <a href="https://www.lojadsop.com.br/" target="_blank" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Loja Online</a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
   )
 };
