@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FE5000', // Laranja
+        primary: '#FF6138', // Laranja
         secondary: '#43B02A', // Verde Escuro
         accent: '#C4D600', // Verde Claro
         neutral: '#A2AAAD', // Cinza Neutro
@@ -26,7 +26,7 @@ export default {
     themes: [
       {
         dsoptheme: {
-          "primary": "#FE5000", // Laranja
+          "primary": "#FF6138", // Laranja
           "secondary": "#43B02A", // Verde Escuro
           "accent": "#C4D600", // Verde Claro
           "neutral": "#A2AAAD", // Cinza Neutro

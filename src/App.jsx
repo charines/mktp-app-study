@@ -3,6 +3,7 @@ import './App.css';
 import Secao1 from './components/Secao1';
 import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
+import HeaderDSOP from './layout/header/HeaderDSOP';
 
 function App() {
   const [dados, setDados] = useState(null);
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <>
+      <HeaderDSOP />
       <Secao1 />
       <Formulario onCalcular={handleCalcular} />
       {parametroShowAnswer && mostrarResultado && dados && (
