@@ -4,6 +4,9 @@ import './App.css';
 import Secao1 from './components/Secao1';
 import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
+import Ofertas from './components/Ofertas';
+import EntendaMais from './components/EntendaMais';
+import Footer from './components/footer';
 
 function App() {
   const [dados, setDados] = useState(null);
@@ -84,6 +87,9 @@ function App() {
         />
       )}
       {mostrarResultado && dados && <Resultado dados={dados} />}
+      <Ofertas />
+      <EntendaMais />
+      <Footer />
     </>
   );
 }

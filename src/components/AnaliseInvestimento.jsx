@@ -54,7 +54,7 @@ function AnaliseInvestimento({
   return (
     <div id="analise" className="p-6 bg-base-100 shadow-md rounded-lg mt-4 overflow-auto">
       <h2 className="text-2xl font-bold mb-4">Olá {clienteNome}</h2>
-      <h3 className="text-2xl font-bold mb-4">Com base nos valores fornecidos:</h3>
+      <h3 className="text-2xl mb-4">Com base nas informações fornecidas, preparamos uma análise para te ajudar a tomar a melhor decisão sobre o pagamento do IPVA. Confira:</h3>
 
       <section className="mb-6">
         <ul className="list-disc pl-6 space-y-2">
@@ -76,27 +76,47 @@ function AnaliseInvestimento({
 
       {/* Comparação Final */}
       <section className="mb-6 space-y-4">
-        <p>
-          - Se você optar por pagar o IPVA <strong>parcelado</strong>, investirá inicialmente <strong>R$ {((parcelasNum - 1) * parcelaMensalNum).toFixed(2)}</strong>, deduzindo mensalmente o valor da parcela de <strong>R$ {parcelaMensalNum.toFixed(2)}</strong> durante <strong>{parcelasNum - 1}</strong> meses. <br/>Após quitar todas as parcelas, aplicando esse valor no mercado financeiro com uma taxa de juros mensal de <strong>{jurosMensalNum.toFixed(2)}%</strong>, você terá um saldo final (incluindo os juros recebidos) de <strong>R$ {jurosTotaisAcumuladosNum.toFixed(2)}</strong>.
-        </p>
+      <h2 className="text-2xl font-bold mb-4">Cenário 1: Pagamento Parcelado</h2>
+      <p>Se você optar por parcelar o IPVA:</p>
+      <ul>
+        <li>O valor da primeira parcela será <strong>R$ {parcelaMensalNum.toFixed(2)}</strong> (1/{parcelasNum} do total).</li>
+        <li>O restante do valor, <strong>R$ {((parcelasNum - 1) * parcelaMensalNum).toFixed(2)}</strong>, poderá ser investido.</li>
+        <li>A cada mês, você retirará o valor da parcela <strong>(R$ {parcelaMensalNum.toFixed(2)})</strong> do investimento.</li>        
+      </ul>
+      <p>Após pagar todas as parcelas e considerando os rendimentos do investimento, o saldo final seria de apenas <strong>R$ {jurosTotaisAcumuladosNum.toFixed(2)}</strong>.</p>
+      </section>
 
-        <p>
-          - Por outro lado, se você optar por pagar o IPVA <strong>à vista com desconto</strong>, terá um desconto de <strong>R$ {valorDescontoNum.toFixed(2)}</strong>. Se aplicar esse valor no mercado financeiro com uma taxa de juros mensal de <strong>{jurosMensalNum.toFixed(2)}%</strong>, esse desconto renderia um valor futuro de <strong>R$ {(jurosAcumuladosNum + valorDescontoNum).toFixed(2)}</strong> ao final de <strong>{parcelasNum}</strong> meses.
-        </p>
 
-        <p className="text-lg  mt-4">
-          <span><strong>Decisão Final:</strong> A melhor escolha depende do rendimento final:</span>
-          <br />
-          - <strong>À vista:</strong> Com o desconto, o valor futuro aplicado seria de <strong>R$ {(jurosAcumuladosNum + valorDescontoNum).toFixed(2)}</strong>.
-          <br />
-          - <strong>A prazo:</strong> Com o investimento parcelado, o saldo final seria de <strong>R$ {jurosTotaisAcumuladosNum.toFixed(2)}</strong>.
-          <br />
-          <strong className="block mt-2">
-            {melhorOpcao === 'parcelado'
-              ? 'Portanto, nossa sugestão é que você pague o IPVA parcelado.'
-              : 'Portanto, nossa sugestão é que você pague o IPVA à vista.'}
-          </strong>
-        </p>
+      <section className="mb-6 space-y-4">
+      <h2 className="text-2xl font-bold mb-4">Cenário 2: Pagamento à Vista com Desconto</h2>
+      <p>Se você optar por pagar o IPVA à vista, terá um desconto imediato de:<strong>R$ {valorDescontoNum.toFixed(2)}</strong>.</p>
+      <ul>
+        <li>Esse valor pode ser investido a uma taxa de juros mensal de <strong>{jurosMensalNum.toFixed(2)}%</strong></li>
+        <li>Após <strong>{parcelasNum}</strong>  meses, o valor renderia, no total, <strong>R$ {(jurosAcumuladosNum + valorDescontoNum).toFixed(2)}</strong></li>
+      </ul>
+      </section>
+
+
+
+      <section className="mb-6 space-y-4">
+          <h2 className="text-2xl font-bold mb-4">Conclusão:</h2>
+          <p>Comparando as duas opções:</p>
+          <ul>
+            <li>
+              <strong>À vista:</strong> você economizaria com o desconto e, ao investir o valor, teria <strong>R$ {(jurosAcumuladosNum + valorDescontoNum).toFixed(2)}</strong> após <strong>{parcelasNum}</strong> meses.
+            </li>          
+            <li>
+              <strong>Parcelado:</strong> o saldo final do investimento seria de apenas <strong>R$ {jurosTotaisAcumuladosNum.toFixed(2)}</strong>.          
+            </li>
+          </ul>
+          <h2 className="text-1xl font-bold mb-4">Nossa recomendação:</h2>
+          <span> 
+            <strong className="block mt-2">
+              {melhorOpcao === 'parcelado'
+                ? 'o pagamento parcelado é mais vantajoso neste caso! 💡'
+                : 'o pagamento à vista é mais vantajoso neste caso! 💡'}
+            </strong>
+          </span>
       </section>
 
       {/* Botão Refazer o Cálculo */}
