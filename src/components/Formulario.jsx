@@ -36,11 +36,37 @@ function Formulario({ onCalcular, dadosIniciais }) {
   };
 
   const openModal = () => {
-    if (valorIPVA && descontoVista && jurosMensal && parcelas) {
-      setShowModal(true);
-    } else {
+    const valorIPVANum = parseFloat(valorIPVA);
+    const descontoVistaNum = parseFloat(descontoVista);
+    const jurosMensalNum = parseFloat(jurosMensal);
+    const parcelasNum = parseInt(parcelas, 10);
+
+    if (!valorIPVA || !descontoVista || !jurosMensal || !parcelas) {
       alert('Por favor, preencha todos os campos antes de continuar.');
+      return;
     }
+
+    if (valorIPVANum < 100) {
+      alert('O valor do IPVA deve ser no mínimo R$ 100.');
+      return;
+    }
+
+    if (descontoVistaNum < 0.1 || descontoVistaNum > 99.0) {
+      alert('O desconto deve ser entre 0.1% e 99.0%.');
+      return;
+    }
+
+    if (jurosMensalNum < 0.1 || jurosMensalNum > 99.0) {
+      alert('A taxa de juros mensal deve ser entre 0.1% e 99.0%.');
+      return;
+    }
+
+    if (parcelasNum < 2 || parcelasNum > 100) {
+      alert('A quantidade de parcelas deve ser entre 2 e 100.');
+      return;
+    }
+
+    setShowModal(true);
   };
 
   const closeModal = () => setShowModal(false);
@@ -59,6 +85,8 @@ function Formulario({ onCalcular, dadosIniciais }) {
               value={valorIPVA}
               onChange={(e) => handleNumericInput(e, setValorIPVA, 'valorIPVA')}
               className="input input-bordered w-full"
+              min="100"
+              required
             />
           </label>
           <label className="form-control w-full">
@@ -68,6 +96,9 @@ function Formulario({ onCalcular, dadosIniciais }) {
               value={descontoVista}
               onChange={(e) => handleNumericInput(e, setDescontoVista, 'descontoVista')}
               className="input input-bordered w-full"
+              min="0.1"
+              max="99.0"
+              required
             />
           </label>
           <label className="form-control w-full">
@@ -77,6 +108,9 @@ function Formulario({ onCalcular, dadosIniciais }) {
               value={jurosMensal}
               onChange={(e) => handleNumericInput(e, setJurosMensal, 'jurosMensal')}
               className="input input-bordered w-full"
+              min="0.1"
+              max="99.0"
+              required
             />
           </label>
           <label className="form-control w-full">
@@ -86,6 +120,9 @@ function Formulario({ onCalcular, dadosIniciais }) {
               value={parcelas}
               onChange={handleParcelasChange}
               className="input input-bordered w-full"
+              required
+              min="2"
+              max="100"
             />
           </label>
           <button

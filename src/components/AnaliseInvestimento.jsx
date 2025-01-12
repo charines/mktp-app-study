@@ -40,28 +40,39 @@ function AnaliseInvestimento({
       ? 'parcelado'
       : 'avista';
 
+  const handleReset = () => {
+    // Remove os dados do localStorage
+    localStorage.removeItem('valorIPVA');
+    localStorage.removeItem('descontoVista');
+    localStorage.removeItem('jurosMensal');
+    localStorage.removeItem('parcelas');
+
+    // Recarrega a página
+    window.location.reload();
+  };
+
   return (
     <div id="analise" className="p-6 bg-base-100 shadow-md rounded-lg mt-4 overflow-auto">
-<h2 className="text-2xl font-bold mb-4">Olá {clienteNome}</h2>
-<h3 className="text-2xl font-bold mb-4">Com base nos valores fornecidos:</h3>
+      <h2 className="text-2xl font-bold mb-4">Olá {clienteNome}</h2>
+      <h3 className="text-2xl font-bold mb-4">Com base nos valores fornecidos:</h3>
 
-<section className="mb-6">
-  <ul className="list-disc pl-6 space-y-2">
-    <li>
-      <strong>Valor do IPVA:</strong> R$ {valorIPVANum.toFixed(2)}
-    </li>
-    <li>
-      <strong>Desconto para pagamento à vista:</strong> {descontoVistaNum.toFixed(2)}% 
-      (R$ {valorDescontoNum.toFixed(2)})
-    </li>
-    <li>
-      <strong>Taxa de juros mensal:</strong> {jurosMensalNum.toFixed(2)}% ao mês
-    </li>
-    <li>
-      <strong>Quantidade de parcelas:</strong> {parcelasNum}
-    </li>
-  </ul>
-</section>
+      <section className="mb-6">
+        <ul className="list-disc pl-6 space-y-2">
+          <li>
+            <strong>Valor do IPVA:</strong> R$ {valorIPVANum.toFixed(2)}
+          </li>
+          <li>
+            <strong>Desconto para pagamento à vista:</strong> {descontoVistaNum.toFixed(2)}% 
+            (R$ {valorDescontoNum.toFixed(2)})
+          </li>
+          <li>
+            <strong>Taxa de juros mensal:</strong> {jurosMensalNum.toFixed(2)}% ao mês
+          </li>
+          <li>
+            <strong>Quantidade de parcelas:</strong> {parcelasNum}
+          </li>
+        </ul>
+      </section>
 
       {/* Comparação Final */}
       <section className="mb-6 space-y-4">
@@ -87,6 +98,14 @@ function AnaliseInvestimento({
           </strong>
         </p>
       </section>
+
+      {/* Botão Refazer o Cálculo */}
+      <button
+        onClick={handleReset}
+        className="btn btn-primary mt-4"
+      >
+        Recalcular
+      </button>
     </div>
   );
 }

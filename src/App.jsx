@@ -24,18 +24,24 @@ function App() {
     };
   };
 
-  // Carrega dados iniciais
+  // Carrega dados iniciais e verifica se estão completos
   useEffect(() => {
     const storedData = carregarDadosDoStorage();
-    if (
+    const dadosCompletos =
       storedData.valorIPVA &&
       storedData.descontoVista &&
       storedData.jurosMensal &&
       storedData.parcelas &&
-      storedData.showresult === 'sim'
-    ) {
+      storedData.nome &&
+      storedData.email &&
+      storedData.cidade &&
+      storedData.estado;
+
+    if (dadosCompletos && storedData.showresult === 'sim') {
       setDados(storedData);
       setMostrarResultado(true);
+    } else {
+      setMostrarResultado(false);
     }
   }, []);
 
@@ -50,17 +56,33 @@ function App() {
       ...novosDados,
     }));
 
-    setMostrarResultado(true);
-    localStorage.setItem('showresult', 'sim');
+    const dadosCompletos =
+      novosDados.valorIPVA &&
+      novosDados.descontoVista &&
+      novosDados.jurosMensal &&
+      novosDados.parcelas &&
+      novosDados.nome &&
+      novosDados.email &&
+      novosDados.cidade &&
+      novosDados.estado;
+
+    if (dadosCompletos) {
+      setMostrarResultado(true);
+      localStorage.setItem('showresult', 'sim');
+    } else {
+      setMostrarResultado(false);
+    }
   };
 
   return (
     <>
       <Secao1 />
-      <Formulario
-        onCalcular={handleCalcular}
-        dadosIniciais={dados} // Passa dados carregados para o formulário e modal
-      />
+      {!mostrarResultado && (
+        <Formulario
+          onCalcular={handleCalcular}
+          dadosIniciais={dados} // Passa dados carregados para o formulário e modal
+        />
+      )}
       {mostrarResultado && dados && <Resultado dados={dados} />}
     </>
   );

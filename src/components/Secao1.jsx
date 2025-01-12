@@ -7,11 +7,19 @@ function Secao1() {
 
   // Função para rolar suavemente até o questionário
   const scrollToQuestionario = () => {
-    const section = document.getElementById('questionario');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Define a âncora na URL
+    window.location.hash = '#questionario';
+  
+    // Remove os dados do localStorage
+    localStorage.removeItem('valorIPVA');
+    localStorage.removeItem('descontoVista');
+    localStorage.removeItem('jurosMensal');
+    localStorage.removeItem('parcelas');
+  
+    // Recarrega a página
+    window.location.reload();
   };
+  
 
   return (
     <section
