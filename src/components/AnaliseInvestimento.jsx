@@ -9,7 +9,8 @@ function AnaliseInvestimento({
   jurosTotaisAcumulados,
   valorDesconto,
   valorFuturoTotal,
-  jurosAcumulados
+  jurosAcumulados,
+  clienteNome,
 }) {
   // Ao montar o componente, rolar até a âncora
   useEffect(() => {
@@ -41,7 +42,7 @@ function AnaliseInvestimento({
 
   return (
     <div id="analise" className="p-6 bg-base-100 shadow-md rounded-lg mt-4 overflow-auto">
-<h2 className="text-2xl font-bold mb-4">Olá</h2>
+<h2 className="text-2xl font-bold mb-4">Olá {clienteNome}</h2>
 <h3 className="text-2xl font-bold mb-4">Com base nos valores fornecidos:</h3>
 
 <section className="mb-6">
