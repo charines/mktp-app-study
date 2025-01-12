@@ -55,6 +55,7 @@ function Resultado({ dados }) {
             clienteNome={dados.nome}
           />
         </div>
+        
         <details className="collapse bg-base-200">
           <summary className="collapse-title text-xl font-medium">
             Mostrar detalhes do Cálculo
