@@ -26,7 +26,12 @@ function ModalForm({ onClose, onCalcular, dadosIniciais }) {
       localStorage.setItem('form_email', email);
       localStorage.setItem('form_cidade', cidade);
       localStorage.setItem('form_estado', estado);
-      onCalcular();
+      localStorage.setItem('showresult', 'sim');
+
+      onCalcular(); // Chama a função para processar os dados
+
+      // Recarrega a página para atualizar o formulário
+      window.location.reload();
     } else {
       alert('Por favor, preencha todos os campos!');
     }
