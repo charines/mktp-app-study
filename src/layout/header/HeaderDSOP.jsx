@@ -4,6 +4,8 @@ import SearchInput from "./SearchInput";
 import LogoDsop from "../../assets/img/logo-dsop.webp";
 
 function HeaderDSOP(){
+  const baseUrl = 'https://dsop.com.br';
+
   return (
     <header className="bg-primary">
       <section className="py-3 pl-3 sm:pl-0">
@@ -46,7 +48,7 @@ function HeaderDSOP(){
       </section>
 
       <nav className="max-w-screen-xl mx-auto flex items-center justify-between gap-0 md:gap-5 lg:gap-48 relative">
-        <a href="/" className="header__menu__nav__logo">
+        <a href={baseUrl} className="header__menu__nav__logo">
           <img src={LogoDsop} alt="logo dsop" height="58" width="204" />
         </a>
 
@@ -65,19 +67,19 @@ function HeaderDSOP(){
             <li>
               <details>
                 <summary className="py-7 px-4 text-base font-semibold">Sobre</summary>
-                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg">
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg before:hidden">
                   <li className="menu-title mb-2 text-primary text-xl">Sobre</li>
                   <li>
-                    <a href="https://dsop.com.br/alumni" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Alumni</a>
+                    <a href={`${baseUrl}/alumni`} className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Alumni</a>
                   </li>
                   <li>
-                    <a href="https://dsop.com.br/sobre-a-dsop" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Quem Somos</a>
+                    <a href={`${baseUrl}/sobre-a-dsop`} className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Quem Somos</a>
                   </li>
                   <li>
-                    <a href="https://dsop.com.br/politica-qualidade" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Política de Qualidade</a>
+                    <a href={`${baseUrl}/politica-qualidade`} className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Política de Qualidade</a>
                   </li>
                   <li>
-                    <a href="https://dsop.com.br/contato" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Contato</a>
+                    <a href={`${baseUrl}/contato`} className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Contato</a>
                   </li>
                 </ul>
               </details>
@@ -85,34 +87,174 @@ function HeaderDSOP(){
             <li>
               <details>
                 <summary className="py-7 px-4 text-base font-semibold">Contratar</summary>
-                <ul className="bg-base-100 py-6 px-5 absolute z-20 max-w-2xl right-0 top-full rounded-lg">
-                  <li className="menu-title mb-2 text-primary text-xl">Contratar</li>
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-fit h-96 left-1/2 -translate-x-1/2 top-full rounded-lg before:hidden" style={{width: "767px"}}>
+                  <li className="menu-title mb-2 text-primary text-xl relative after:content-[''] after:w-0.5 after:h-80 after:absolute after:left-36 after:ml-1 after:bg-gray-50">
+                    Contratar
+                  </li>
                   <div role="tablist" className="tabs tabs-bordered bg-transparent">
-                   <div className="flex gap-20">
-                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Para você" defaultChecked />
-                      <div role="tabpanel" className="tab-content">
-                        Tab content 1
-                      </div>
-                   </div>
-
                     <div className="flex gap-20">
-                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Para Escolas" />
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab px-3 mb-1 hover:text-primary text-gray-50 text-base font-medium checked:text-primary" aria-label="Para você" defaultChecked />
                       <div role="tabpanel" className="tab-content">
-                        Tab content 2
+                        <div className="flex h-0">
+                          <div className="w-44 -mt-11">
+                            <h2 className="mb-4 pl-3 text-primary text-xl font-bold">Cursos</h2>
+                            <ul className="before:hidden m-0 p-0 flex gap-1 flex-col">
+                              <li>
+                                <a href={`${baseUrl}/marketplace`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Cursos EAD
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/superior-de-tecnologia-em-educacao-financeira`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Graduação
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/pos-graduacao`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Pós-Graduação
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/mestrado`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Mestrado
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/doutorado`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Doutorado
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                
+                          <div className="w-40 -mt-11">
+                            <h2 className="mb-4 pl-3 text-primary text-xl font-bold">Conteúdo</h2>
+                            <ul className="before:hidden m-0 p-0 flex gap-1 flex-col">
+                              <li>
+                                <a href="https://dflix.com.br/" target="_blank" className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  DFLIX
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/editora`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Editora
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/palestras`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Palestras
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/workshop`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Workshop
+                                </a>
+                              </li>
+                              <li>
+                                <a href="https://www.youtube.com/c/Dinheiro%C3%A0vista/videos" target="_blank" className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Dinheiro à vista
+                                </a>
+                              </li>
+                              <li>
+                                <a href="https://www.youtube.com/@TVDSOP" target="_blank" className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  TV DSOP
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                
+                          <div className="w-52 -mt-11">
+                            <h2 className="mb-4 pl-3 text-primary text-xl font-bold">Pessoal</h2>
+                            <ul className="before:hidden m-0 p-0 flex gap-1 flex-col">
+                              <li>
+                                <a href="https://www.terapiafinanceira.com.br/" target="_blank" className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Terapia Financeira
+                                </a>
+                              </li>
+                              <li>
+                                <a href="https://crm.dsop.com.br/public/home" target="_blank" className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Teste de Perfil Financeiro
+                                </a>
+                              </li>
+                              <li>
+                                <a href={`${baseUrl}/mentoria`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                  Mentoria
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-16">
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab px-3 mb-1 hover:text-primary text-gray-50 text-base font-medium checked:text-primary" aria-label="Para Escolas" />
+                      <div role="tabpanel" className="tab-content">
+                        <div className="w-80 flex relative -top-20 h-0">
+                          <ul className="before:hidden m-0 mt-1.5 p-0 flex gap-2 flex-col">
+                            <li>
+                              <a href={`${baseUrl}/educacional`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Educacional
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`${baseUrl}/escola-publica`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Educacional para Escolas Públicas
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-12">
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab px-3 mb-1 hover:text-primary text-gray-50 text-base font-medium checked:text-primary" aria-label="Para Empresas" />
+                      <div role="tabpanel" className="tab-content">
+                        <div className="w-80 flex h-0 relative -top-28">
+                          <ul className="before:hidden m-0 mt-1.5 p-0 flex gap-2 flex-col">
+                            <li>
+                              <a href={`${baseUrl}/in-company`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                In Company
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`${baseUrl}/projetos-especiais`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Projetos Especiais
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`${baseUrl}/mentoria`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Mentoria
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`${baseUrl}/palestras`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Palestras
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`${baseUrl}/workshop`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Workshop
+                              </a>
+                            </li>
+                            <li>
+                              <a href={`${baseUrl}/marketplace`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">
+                                Marketplace
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
 
                     <div className="flex gap-20">
-                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Para Empresas" />
+                      <input type="radio" name="my_tabs_1" role="tab" className="tab px-3 hover:text-primary text-gray-50 text-base font-medium checked:text-primary" aria-label="Catálogos" />
                       <div role="tabpanel" className="tab-content">
-                        Tab content 3
-                      </div>
-                    </div>
-
-                    <div className="flex gap-20">
-                      <input type="radio" name="my_tabs_1" role="tab" className="tab hover:text-primary text-gray-50 text-base font-medium" aria-label="Catálogos" />
-                      <div role="tabpanel" className="tab-content">
-                        Tab content 4
+                        <div className="w-80 flex h-0 relative -top-36">
+                          <ul className="before:hidden m-0 mt-1 p-0 flex gap-1 flex-col">
+                            <li><a href={`${baseUrl}/catalogos`} className="px-3 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Catálogos</a></li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -122,23 +264,23 @@ function HeaderDSOP(){
             <li>
               <details>
                 <summary className="py-7 px-4 text-base font-semibold">Franquias</summary>
-                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg">
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg before:hidden">
                   <li className="menu-title mb-2 text-primary text-xl">Franquias</li>
                   <li>
-                    <a href="https://dsop.com.br/franquia" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Sobre a Franquia</a>
+                    <a href={`${baseUrl}/franquia`} className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Sobre a Franquia</a>
                   </li>
                   <li>
-                    <a href="https://dsop.com.br/socios-executivos/" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Sócios-Executivos</a>
+                    <a href={`${baseUrl}/socios-executivos`} className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Sócios-Executivos</a>
                   </li>
                 </ul>
               </details>
             </li>
-            <li className="py-7 px-4"><a href="https://dsop.com.br/eventos" className="p-0 text-base font-semibold">Eventos</a></li>
-            <li className="py-7 px-4"><a href="https://dsop.com.br/blog" className="p-0 text-base font-semibold">Blog</a></li>
+            <li className="py-7 px-4"><a href={`${baseUrl}/eventos`} className="p-0 text-base font-semibold">Eventos</a></li>
+            <li className="py-7 px-4"><a href={`${baseUrl}/blog`} className="p-0 text-base font-semibold">Blog</a></li>
             <li>
               <details>
                 <summary className="py-7 px-4 text-base font-semibold">Lojas</summary>
-                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg">
+                <ul className="bg-base-100 py-6 px-5 absolute z-20 w-56 right-0 top-full rounded-lg before:hidden">
                   <li className="menu-title mb-2 text-primary text-xl">Lojas</li>
                   <li>
                     <a href="https://www.loopi.toys/" target="_blank" className="py-2 hover:bg-orange-50 hover:text-primary text-gray-50 text-base font-medium">Loopi Toys</a>
