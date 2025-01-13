@@ -54,7 +54,7 @@ function AnaliseInvestimento({
   return (
     <div id="analise" className="p-6 bg-base-100 shadow-md rounded-lg mt-4 overflow-auto">
       <h2 className="text-2xl font-bold mb-4">Olá {clienteNome}</h2>
-      <h3 className="text-2xl mb-4">Com base nas informações fornecidas, preparamos uma análise para te ajudar a tomar a melhor decisão sobre o pagamento do IPVA. Confira:</h3>
+      <h3 className="text-lg mb-4">Com base nas informações fornecidas, preparamos uma análise para te ajudar a tomar a melhor decisão sobre o pagamento do IPVA. Confira:</h3>
 
       <section className="mb-6">
         <ul className="list-disc pl-6 space-y-2">
