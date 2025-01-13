@@ -6,7 +6,8 @@ import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
 import Ofertas from './components/Ofertas';
 import EntendaMais from './components/EntendaMais';
-import Footer from './components/footer';
+import Rodape from './components/Rodape';
+
 
 function App() {
   const [dados, setDados] = useState(null);
@@ -89,7 +90,7 @@ function App() {
       {mostrarResultado && dados && <Resultado dados={dados} />}
       <Ofertas />
       <EntendaMais />
-      <Footer />
+      <Rodape />
     </>
   );
 }

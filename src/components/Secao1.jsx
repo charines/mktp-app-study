@@ -20,6 +20,15 @@ function Secao1() {
     window.location.reload();
   };
   
+  
+// Função para rolar até uma seção específica
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 
   return (
     <section
@@ -61,15 +70,15 @@ function Secao1() {
             Simular Agora
           </button>
           
-          {/* Botão 3: Como Calcular o seu IPVA */}
-          <a
-            href="https://www.idinheiro.com.br/calculadoras/simulador-de-ipva/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-accent text-sm md:text-base px-4 py-2 w-full md:w-auto"
-          >
-            Como Calcular o seu IPVA
-          </a>
+      {/* Botão 3: Como Calcular o seu IPVA */}
+      <button
+        onClick={() => scrollToSection('entendamais')}
+        className="btn btn-accent text-sm md:text-base px-4 py-2 w-full md:w-auto"
+      >
+        Como Calcular o seu IPVA
+      </button>
+
+
         </div>
       </div>
 
