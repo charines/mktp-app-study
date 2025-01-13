@@ -7,6 +7,7 @@ import Resultado from './components/Resultado';
 import Ofertas from './components/Ofertas';
 import EntendaMais from './components/EntendaMais';
 import Rodape from './components/Rodape';
+import HeaderDSOP from './layout/header/HeaderDSOP';
 
 function App() {
   const [dados, setDados] = useState(null);
