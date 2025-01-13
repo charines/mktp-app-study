@@ -29,7 +29,7 @@ function RacionalInvestimentoDesconto({ valorDesconto, taxaJuros, meses }) {
 
   return (
     <div className="p-6 bg-base-200 shadow-md rounded-lg mt-4 overflow-x-auto">
-      <h3 className="text-xl font-bold mb-4">Racional do Investimento com Desconto</h3>
+      <h3 className="text-xl font-bold mb-4">Racional</h3>
       <div className="overflow-x-auto">
         <table className="table-auto w-full text-sm text-left min-w-[600px]">
           <thead>

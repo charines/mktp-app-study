@@ -1,59 +1,96 @@
+// App.jsx
 import { useEffect, useState } from 'react';
 import './App.css';
 import Secao1 from './components/Secao1';
 import Formulario from './components/Formulario';
 import Resultado from './components/Resultado';
-import HeaderDSOP from './layout/header/HeaderDSOP';
+import Ofertas from './components/Ofertas';
+import EntendaMais from './components/EntendaMais';
+import Rodape from './components/Rodape';
 
 function App() {
   const [dados, setDados] = useState(null);
   const [mostrarResultado, setMostrarResultado] = useState(false);
-  const [parametroShowAnswer, setParametroShowAnswer] = useState(false);
 
-  // Captura parâmetros da URL
+  // Carrega dados do localStorage
+  const carregarDadosDoStorage = () => {
+    return {
+      valorIPVA: parseFloat(localStorage.getItem('valorIPVA')) || '',
+      descontoVista: parseFloat(localStorage.getItem('descontoVista')) || '',
+      jurosMensal: parseFloat(localStorage.getItem('jurosMensal')) || '',
+      parcelas: parseInt(localStorage.getItem('parcelas'), 10) || '',
+      nome: localStorage.getItem('form_nome') || '',
+      email: localStorage.getItem('form_email') || '',
+      cidade: localStorage.getItem('form_cidade') || '',
+      estado: localStorage.getItem('form_estado') || '',
+      showresult: localStorage.getItem('showresult') || 'nao',
+    };
+  };
+
+  // Carrega dados iniciais e verifica se estão completos
   useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const showAnswer = urlParams.get('show');
+    const storedData = carregarDadosDoStorage();
+    const dadosCompletos =
+      storedData.valorIPVA &&
+      storedData.descontoVista &&
+      storedData.jurosMensal &&
+      storedData.parcelas &&
+      storedData.nome &&
+      storedData.email &&
+      storedData.cidade &&
+      storedData.estado;
 
-    if (showAnswer === 'answer') {
-      setParametroShowAnswer(true);
-      carregarDadosDoStorage();
+    if (dadosCompletos && storedData.showresult === 'sim') {
+      setDados(storedData);
+      setMostrarResultado(true);
+    } else {
+      setMostrarResultado(false);
     }
   }, []);
 
-  // Carregar dados do LocalStorage
-  const carregarDadosDoStorage = () => {
-    const valorIPVA = parseFloat(localStorage.getItem('valorIPVA')) || 0;
-    const descontoVista = parseFloat(localStorage.getItem('descontoVista')) || 0;
-    const jurosMensal = parseFloat(localStorage.getItem('jurosMensal')) || 0;
-    const parcelas = parseInt(localStorage.getItem('parcelas'), 10) || 0;
-
-    if (valorIPVA && descontoVista && jurosMensal && parcelas) {
-      setDados({
-        valorIPVA,
-        descontoVista,
-        jurosMensal,
-        parcelas,
-      });
-      setMostrarResultado(true);
-    }
-  };
-
-  // Atualiza os dados quando o formulário salva no estado
+  // Salva dados no localStorage e atualiza estado
   const handleCalcular = (novosDados) => {
-    setDados(novosDados);
-    setMostrarResultado(true);
+    Object.entries(novosDados).forEach(([key, value]) => {
+      localStorage.setItem(key, value);
+    });
+
+    setDados((prevDados) => ({
+      ...prevDados,
+      ...novosDados,
+    }));
+
+    const dadosCompletos =
+      novosDados.valorIPVA &&
+      novosDados.descontoVista &&
+      novosDados.jurosMensal &&
+      novosDados.parcelas &&
+      novosDados.nome &&
+      novosDados.email &&
+      novosDados.cidade &&
+      novosDados.estado;
+
+    if (dadosCompletos) {
+      setMostrarResultado(true);
+      localStorage.setItem('showresult', 'sim');
+    } else {
+      setMostrarResultado(false);
+    }
   };
 
   return (
     <>
       <HeaderDSOP />
       <Secao1 />
-      <Formulario onCalcular={handleCalcular} />
-      {parametroShowAnswer && mostrarResultado && dados && (
-        <Resultado dados={dados} />
+      {!mostrarResultado && (
+        <Formulario
+          onCalcular={handleCalcular}
+          dadosIniciais={dados} // Passa dados carregados para o formulário e modal
+        />
       )}
+      {mostrarResultado && dados && <Resultado dados={dados} />}
+      <Ofertas />
+      <EntendaMais />
+      <Rodape />
     </>
   );
 }
