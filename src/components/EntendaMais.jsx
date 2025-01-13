@@ -1,6 +1,6 @@
 function EntendaMais() {
   return (
-    <section className="py-8 bg-base-200 text-center" id="entendamais">
+    <section className="p-6 py-8 bg-base-200 text-center" id="entendamais">
       <h2 className="text-2xl md:text-3xl font-bold mb-4">
         🎥 Entenda ainda mais sobre como pagar o IPVA com inteligência financeira!
       </h2>
