@@ -4,7 +4,7 @@ function EntendaMais() {
       <h2 className="text-2xl md:text-3xl font-bold mb-4">
         🎥 Entenda ainda mais sobre como pagar o IPVA com inteligência financeira!
       </h2>
-      <p className="mb-4 text-sm md:text-base">
+      <p className="mb-4 md:text-black text-sm md:text-base">
         Assista ao vídeo do PhD em Educação Financeira, Reinaldo Domingos, no canal Dinheiro à Vista:
       </p>
       <div className="mb-4 flex justify-center">

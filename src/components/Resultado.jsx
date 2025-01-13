@@ -56,7 +56,7 @@ function Resultado({ dados }) {
           />
         </div>
         
-        <details className="collapse bg-base-200">
+        <details className="collapse bg-base-200 flex flex-col">
           <summary className="collapse-title text-xl font-medium">
             Mostrar detalhes do Cálculo
           </summary>
