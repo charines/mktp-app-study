@@ -19,6 +19,9 @@ export default {
         primary: ['Myriad MM', 'Tahoma', 'sans-serif'],
         secondary: ['Tahoma', 'sans-serif'],
       },
+      spacing: {
+        '767': '47.9375rem',
+      }
     },
   },
   plugins: [
