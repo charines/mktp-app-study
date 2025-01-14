@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ModalForm from './ModalForm';
 
-function Formulario({ onCalcular, dadosIniciais }) {
+function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   const [valorIPVA, setValorIPVA] = useState('');
   const [descontoVista, setDescontoVista] = useState('');
   const [jurosMensal, setJurosMensal] = useState('');
@@ -145,6 +145,7 @@ function Formulario({ onCalcular, dadosIniciais }) {
                 parcelas: parseInt(parcelas, 10),
               });
             }}
+            utmParams={utmParams}
           />
         )}
       </div>
