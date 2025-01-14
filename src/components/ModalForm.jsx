@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { sendFormDataToServer } from '../utils/sendFormDataToServer';
 
 function ModalForm({ onClose, onCalcular, dadosIniciais }) {
   const [nome, setNome] = useState('');
@@ -19,24 +20,51 @@ function ModalForm({ onClose, onCalcular, dadosIniciais }) {
     localStorage.setItem(key, value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Evita comportamento padrão do formulário
+  
     if (nome && email && cidade && estado) {
+      // Armazena os dados no localStorage
       localStorage.setItem('form_nome', nome);
       localStorage.setItem('form_email', email);
       localStorage.setItem('form_cidade', cidade);
       localStorage.setItem('form_estado', estado);
       localStorage.setItem('showresult', 'sim');
-
+  
       onCalcular(); // Chama a função para processar os dados
-
+  
+      // Dados para envio via POST
+      const formData = {
+        nome,
+        email,
+        cidade,
+        estado,
+        utm_source: "teste",
+        utm_medium: "teste",
+        utm_campaign: "IPVA",
+        utm_content: "Simulador/IPVA",
+        utm_term: "Simuladores",
+        last_pag: "dsop",
+        produto: "simulador/ipva",
+        responsavel_pelo_lead: "kaue.ferreira@dsop.com.br",
+      };
+  
+      try {
+        // Executa o POST
+        const response = await sendFormDataToServer(formData);
+        console.log("Dados enviados com sucesso:", response);
+      } catch (error) {
+        console.error("Erro ao enviar os dados:", error);
+        alert("Erro ao enviar os dados. Consulte o console para mais informações.");
+      }
+  
       // Recarrega a página para atualizar o formulário
       window.location.reload();
     } else {
       alert('Por favor, preencha todos os campos!');
     }
   };
-
+  
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-96 z-50">
