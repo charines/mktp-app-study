@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { sendFormDataToServer } from '../utils/sendFormDataToServer';
 
-function ModalForm({ onClose, onCalcular, dadosIniciais }) {
+function ModalForm({ onClose, onCalcular, dadosIniciais, utmParams }) {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [cidade, setCidade] = useState('');
@@ -39,14 +39,14 @@ function ModalForm({ onClose, onCalcular, dadosIniciais }) {
         email,
         cidade,
         estado,
-        utm_source: "site-dsop",
+        utm_source: utmParams.utm_source || 'site-dsop',
         utm_medium: "email", // ou outro valor apropriado
         utm_campaign: "ipva-2025",
         utm_content: "simulador-formulario",
         utm_term: "simuladores",
         last_pag: "dsop",
         produto: "simulador/ipva",
-        responsavel_pelo_lead: "kaue.ferreira@dsop.com.br",
+        responsavel_pelo_lead: utmParams.responsavel_pelo_lead || 'kaue.ferreira',
       };
   
       try {

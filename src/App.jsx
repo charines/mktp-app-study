@@ -12,6 +12,10 @@ import HeaderDSOP from './layout/header/HeaderDSOP';
 function App() {
   const [dados, setDados] = useState(null);
   const [mostrarResultado, setMostrarResultado] = useState(false);
+  const [utmParams, setUtmParams] = useState({
+    utm_source: 'site-dsop',
+    responsavel_pelo_lead: 'kaue.ferreira',
+  });
 
   // Carrega dados do localStorage
   const carregarDadosDoStorage = () => {
@@ -27,6 +31,13 @@ function App() {
       showresult: localStorage.getItem('showresult') || 'nao',
     };
   };
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const utm_source = params.get('utm_source') || 'site-dsop';
+    const responsavel_pelo_lead = params.get('responsavel_pelo_lead') || 'kaue.ferreira';
+  
+    setUtmParams({ utm_source, responsavel_pelo_lead });
+  }, []);
 
   // Carrega dados iniciais e verifica se estão completos
   useEffect(() => {
@@ -85,7 +96,8 @@ function App() {
       {!mostrarResultado && (
         <Formulario
           onCalcular={handleCalcular}
-          dadosIniciais={dados} // Passa dados carregados para o formulário e modal
+          dadosIniciais={dados} 
+          utmParams={utmParams}
         />
       )}
       {mostrarResultado && dados && <Resultado dados={dados} />}
