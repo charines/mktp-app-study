@@ -56,12 +56,12 @@ function AnaliseInvestimento({
   return (
     <div id="analise" className="p-6 bg-base-100 shadow-md rounded-lg mt-4 overflow-auto">
       <h2 className="text-2xl font-bold mb-4">Olá {clienteNome}</h2>
-      <h3 className="text-lg mb-4">Com base nas informações fornecidas, preparamos uma análise para te ajudar a tomar a melhor decisão sobre o pagamento do IPVA. Confira:</h3>
+      <h3 className="text-lg mb-4">Com base nas informações fornecidas, preparamos uma análise para te ajudar a tomar a melhor decisão sobre o pagamento do IPTU. Confira:</h3>
 
       <section className="mb-6">
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong>Valor do IPVA:</strong> R$ {valorIPVANum.toFixed(2)}
+            <strong>Valor do IPTU:</strong> R$ {valorIPVANum.toFixed(2)}
           </li>
           <li>
             <strong>Desconto para pagamento à vista:</strong> {descontoVistaNum.toFixed(2)}% 
@@ -79,7 +79,7 @@ function AnaliseInvestimento({
       {/* Comparação Final */}
       <section className="mb-6 space-y-4">
       <h2 className="text-2xl font-bold mb-4">Cenário 1: Pagamento Parcelado</h2>
-      <p>Se você optar por parcelar o IPVA:</p>
+      <p>Se você optar por parcelar o IPTU:</p>
       <ul>
         <li>O valor da primeira parcela será <strong>R$ {parcelaMensalNum.toFixed(2)}</strong> (1/{parcelasNum} do total).</li>
         <li>O restante do valor, <strong>R$ {((parcelasNum - 1) * parcelaMensalNum).toFixed(2)}</strong>, poderá ser investido.</li>
@@ -91,7 +91,7 @@ function AnaliseInvestimento({
 
       <section className="mb-6 space-y-4">
       <h2 className="text-2xl font-bold mb-4">Cenário 2: Pagamento à Vista com Desconto</h2>
-      <p>Se você optar por pagar o IPVA à vista, terá um desconto imediato de:<strong>R$ {valorDescontoNum.toFixed(2)}</strong>.</p>
+      <p>Se você optar por pagar o IPTU à vista, terá um desconto imediato de:<strong>R$ {valorDescontoNum.toFixed(2)}</strong>.</p>
       <ul>
         <li>Esse valor pode ser investido a uma taxa de juros mensal de <strong>{jurosMensalNum.toFixed(2)}%</strong></li>
         <li>Após <strong>{parcelasNum}</strong>  meses, o valor renderia, no total, <strong>R$ {(jurosAcumuladosNum + valorDescontoNum).toFixed(2)}</strong></li>

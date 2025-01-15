@@ -81,7 +81,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
         </h2>
         <form className="space-y-4 w-full">
           <label className="form-control w-full">
-            <span className="label-text">Valor do IPVA (R$)</span>
+            <span className="label-text">Valor do IPTU (R$)</span>
             <input
               type="text"
               value={valorIPVA}

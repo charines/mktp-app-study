@@ -46,7 +46,7 @@ const scrollToSection = (sectionId) => {
         </div>
         {/* Título */}
         <h1 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
-          Simulador de IPVA
+          Simulador de IPTU
         </h1>
         {/* Descrição */}
         <p className="text-sm md:text-lg mb-6 drop-shadow-md">
@@ -54,12 +54,12 @@ const scrollToSection = (sectionId) => {
         </p>
         {/* Botões Informativos */}
         <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-4 mt-6">
-          {/* Botão 1: O que é IPVA */}
+          {/* Botão 1: O que é IPTU */}
           <button
             onClick={() => setIsModalOpen(true)}
             className="btn btn-primary text-sm md:text-base px-4 py-2 w-full md:w-auto"
           >
-            O que é o IPVA?
+            O que é o IPTU?
           </button>
           
           {/* Botão 2: Simule Agora */}
@@ -70,12 +70,12 @@ const scrollToSection = (sectionId) => {
             Simular Agora
           </button>
           
-      {/* Botão 3: Como Calcular o seu IPVA */}
+      {/* Botão 3: Como Calcular o seu IPTU */}
       <button
         onClick={() => scrollToSection('entendamais')}
         className="btn btn-accent text-sm md:text-base px-4 py-2 w-full md:w-auto"
       >
-        Como Calcular o seu IPVA
+        Como Calcular o seu IPTU
       </button>
 
 
@@ -86,19 +86,19 @@ const scrollToSection = (sectionId) => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 px-4">
           <div className="bg-white text-black rounded-lg p-6 max-w-lg w-full relative">
-            <h2 className="text-xl font-bold mb-4">O que é IPVA?</h2>
+            <h2 className="text-xl font-bold mb-4">O que é IPTU?</h2>
             <p className="text-sm mb-4">
-              O IPVA (Imposto sobre a Propriedade de Veículos Automotores) é um imposto estadual obrigatório 
-              que deve ser pago anualmente pelos proprietários de veículos. A arrecadação é utilizada para 
-              financiar serviços públicos, como saúde, educação e infraestrutura viária.
+              Dois dos gastos que mais desequilibram a vida financeira dos brasileiros são o IPVA e o IPTU, mas não precisa ser assim. 
+              Não programar esses pagamentos com antecedência é o maior erro.
+              Mas uma das dúvidas mais comuns em relação ao IPTU e ao IPVA é sobre a condição de pagamento: é melhor pagar à vista ou a prazo?
             </p>
             <a
-              href="https://www.serasa.com.br/carteira-digital/guia-do-ipva-da-serasa/"
+              href="https://dsop.com.br/planejamento/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline"
             >
-              Saiba mais sobre o IPVA
+              Saiba mais sobre o IPTU
             </a>
             <button
               onClick={() => setIsModalOpen(false)}
