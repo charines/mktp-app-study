@@ -8,6 +8,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   const [jurosMensal, setJurosMensal] = useState('');
   const [parcelas, setParcelas] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [hasRecaptcha, setHasRecaptcha] = useState('');
 
   useEffect(() => {
     // Prioriza dadosIniciais se fornecidos, senão utiliza valores do localStorage
@@ -67,14 +68,15 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
       return;
     }
 
+    if (!hasRecaptcha){
+      alert('É preciso marcar, não sou um Robô');
+      return;
+    }
+
     setShowModal(true);
   };
 
   const closeModal = () => setShowModal(false);
-
-  function onChangeCaptcha(value){
-    console.log("Captcha value: ", value)
-  }
 
   return (
     <section className="py-8 bg-base-200">
@@ -131,16 +133,24 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             />
           </label>
           <ReCAPTCHA
-            sitekey={import.meta.env.VITE_SITE_KEY}
-            onChange={onChangeCaptcha}
+            sitekey={import.meta.env.VITE_APP_SITE_KEY}
+            onChange={(value) => setHasRecaptcha(value)}
           />
-          <button
-            type="button"
-            onClick={openModal}
-            className="btn btn-secondary w-full mt-4"
-          >
+          {hasRecaptcha 
+            ? (<button
+              type="button"
+              onClick={openModal}
+              className="btn btn-secondary w-full mt-4"
+            >
             Realizar Simulação
-          </button>
+            </button>) 
+            : (<button
+              type="button"
+              className="btn btn-secondary w-full mt-4 cursor-not-allowed"
+              disabled={true}
+            >
+            Realizar Simulação
+            </button>)}
         </form>
         {showModal && (
           <ModalForm
