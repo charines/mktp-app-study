@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ModalForm from './ModalForm';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   const [valorIPVA, setValorIPVA] = useState('');
@@ -71,6 +72,10 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
 
   const closeModal = () => setShowModal(false);
 
+  function onChangeCaptcha(value){
+    console.log("Captcha value: ", value)
+  }
+
   return (
     <section className="py-8 bg-base-200">
       <div className="container mx-auto px-4 text-center max-w-md">
@@ -125,6 +130,10 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
               max="100"
             />
           </label>
+          <ReCAPTCHA 
+            sitekey='6LfdCbMqAAAAAAXoLCvAjMEvgJmjF3ckY0K6JV62'
+            onChange={onChangeCaptcha}
+          />
           <button
             type="button"
             onClick={openModal}
