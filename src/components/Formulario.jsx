@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ModalForm from './ModalForm';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   const [valorIPVA, setValorIPVA] = useState('');
@@ -7,6 +8,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   const [jurosMensal, setJurosMensal] = useState('');
   const [parcelas, setParcelas] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [hasRecaptcha, setHasRecaptcha] = useState('');
 
   useEffect(() => {
     // Prioriza dadosIniciais se fornecidos, senão utiliza valores do localStorage
@@ -125,13 +127,25 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
               max="100"
             />
           </label>
-          <button
-            type="button"
-            onClick={openModal}
-            className="btn btn-secondary w-full mt-4"
-          >
+          <ReCAPTCHA
+            sitekey={import.meta.env.VITE_APP_SITE_KEY}
+            onChange={(value) => setHasRecaptcha(value)}
+          />
+          {hasRecaptcha 
+            ? (<button
+              type="button"
+              onClick={openModal}
+              className="btn btn-secondary w-full mt-4"
+            >
             Realizar Simulação
-          </button>
+            </button>) 
+            : (<button
+              type="button"
+              className="btn btn-secondary w-full mt-4 cursor-not-allowed"
+              disabled={true}
+            >
+            Realizar Simulação
+            </button>)}
         </form>
         {showModal && (
           <ModalForm

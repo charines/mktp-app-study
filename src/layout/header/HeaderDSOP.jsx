@@ -54,16 +54,6 @@ function HeaderDSOP(){
         </a>
 
         <div>
-          {/* <button className="mt-5 mb-4 bg-transparent block md:hidden" id="menu__button" aria-label="botão menu">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="40" height="40" viewBox="0 0 24 24" className="pointer-events-none fill-white"
-            >
-              <path className="path_conteudo" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z">
-              </path>
-            </svg>
-          </button> */}
-
           <div className="dropdown inline-block md:hidden static">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" className="pointer-events-none fill-white">
@@ -71,8 +61,8 @@ function HeaderDSOP(){
                 </path>
               </svg>
             </div>
-            <ul tabindex="0"
-            class="menu menu-sm dropdown-content bg-base-100 z-20 w-full min-h-screen items-center md:items-auto right-0 p-2">
+            <ul tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 z-20 w-full min-h-screen items-center md:items-auto right-0 p-2">
               <Navigation baseUrl={baseUrl} />
             </ul>
           </div>
@@ -86,13 +76,13 @@ function HeaderDSOP(){
   )
 };
 
-<div class="navbar bg-base-100">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+<div className="navbar bg-base-100">
+  <div className="navbar-start">
+    <div className="dropdown">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          className="h-5 w-5"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
@@ -104,22 +94,22 @@ function HeaderDSOP(){
         </svg>
       </div>
       <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        tabIndex={0}
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li><a>Homepage</a></li>
         <li><a>Portfolio</a></li>
         <li><a>About</a></li>
       </ul>
     </div>
   </div>
-  <div class="navbar-center">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+  <div className="navbar-center">
+    <a className="btn btn-ghost text-xl">daisyUI</a>
   </div>
-  <div class="navbar-end">
-    <button class="btn btn-ghost btn-circle">
+  <div className="navbar-end">
+    <button className="btn btn-ghost btn-circle">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
+        className="h-5 w-5"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor">
@@ -130,11 +120,11 @@ function HeaderDSOP(){
           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
     </button>
-    <button class="btn btn-ghost btn-circle">
-      <div class="indicator">
+    <button className="btn btn-ghost btn-circle">
+      <div className="indicator">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          className="h-5 w-5"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
@@ -144,7 +134,7 @@ function HeaderDSOP(){
             stroke-width="2"
             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
         </svg>
-        <span class="badge badge-xs badge-primary indicator-item"></span>
+        <span className="badge badge-xs badge-primary indicator-item"></span>
       </div>
     </button>
   </div>

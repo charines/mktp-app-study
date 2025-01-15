@@ -46,9 +46,11 @@ function AnaliseInvestimento({
     localStorage.removeItem('descontoVista');
     localStorage.removeItem('jurosMensal');
     localStorage.removeItem('parcelas');
+    localStorage.removeItem('_grecaptcha');
 
-    // Recarrega a página
+    // Recarrega a página e leva para o topo
     window.location.reload();
+    window.scrollTo(0, 0);
   };
 
   return (
