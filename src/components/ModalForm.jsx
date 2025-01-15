@@ -41,11 +41,11 @@ function ModalForm({ onClose, onCalcular, dadosIniciais, utmParams }) {
         estado,
         utm_source: utmParams.utm_source || 'site-dsop',
         utm_medium: "email", // ou outro valor apropriado
-        utm_campaign: "ipva-2025",
+        utm_campaign: "iptu-2025",
         utm_content: "simulador-formulario",
         utm_term: "simuladores",
         last_pag: "dsop",
-        produto: "simulador/ipva",
+        produto: "simulador/iptu",
         responsavel_pelo_lead: utmParams.responsavel_pelo_lead || 'kaue.ferreira',
       };
   
