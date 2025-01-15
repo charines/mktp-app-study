@@ -130,8 +130,8 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
               max="100"
             />
           </label>
-          <ReCAPTCHA 
-            sitekey='6LfdCbMqAAAAAAXoLCvAjMEvgJmjF3ckY0K6JV62'
+          <ReCAPTCHA
+            sitekey={import.meta.env.VITE_SITE_KEY}
             onChange={onChangeCaptcha}
           />
           <button
