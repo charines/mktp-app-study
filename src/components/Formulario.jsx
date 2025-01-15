@@ -68,11 +68,6 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
       return;
     }
 
-    if (!hasRecaptcha){
-      alert('É preciso marcar, não sou um Robô');
-      return;
-    }
-
     setShowModal(true);
   };
 
