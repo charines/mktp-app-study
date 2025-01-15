@@ -1,5 +1,5 @@
 export const sendFormDataToServer = async (formData) => {
-  const url = "https://dsop.com.br/servicos/rdstation/SendIpvaToRd.php";
+  const url = "https://dsop.com.br/servicos/rdstation/SendIptuToRd.php";
 
   try {
     const response = await fetch(url, {
