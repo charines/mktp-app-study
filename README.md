@@ -1,9 +1,9 @@
-# LP-IPTU: Simulador de Cálculo de IPTU
+# LP-Material Escolar: Simulador de Cálculo de Material Escolar
 
 ## Descrição Geral
-Este é um projeto para a criação de uma landing page interativa chamada **LP-IPTU**, que oferece um simulador detalhado para ajudar os usuários a decidirem a melhor forma de pagar o Imposto sobre Propriedade de Veículos Automotores (IPTU). A solução apresenta comparações entre opções de pagamento à vista e parcelado, levando em consideração fatores como taxas de desconto e juros.
+Este é um projeto para a criação de uma landing page interativa chamada **LP-Material Escolar**, que oferece um simulador detalhado para ajudar os usuários a decidirem a melhor forma de pagar o Imposto sobre Propriedade de Veículos Automotores (Material Escolar). A solução apresenta comparações entre opções de pagamento à vista e parcelado, levando em consideração fatores como taxas de desconto e juros.
 
-[Confira mais detalhes neste arquivo](lp-iptu.md)
+[Confira mais detalhes neste arquivo](lp-material-escolar.md)
 
 
 

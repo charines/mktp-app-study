@@ -7,7 +7,7 @@ function Ofertas() {
       </p>
       <div className="mb-4">
         <p>📚 <strong>15% de desconto no livro Terapia Financeira</strong></p>
-        <p>Use o código: <strong>IPTU15-LIVRO</strong></p>
+        <p>Use o código: <strong>MAT15-LIVRO</strong></p>
         <a
           href="https://www.lojadsop.com.br/educacao-financeira/terapia-financeira-2-ed"
           target="_blank"
@@ -19,7 +19,7 @@ function Ofertas() {
       </div>
       <div>
         <p>💻 <strong>15% de desconto no curso EAD Educação do Comportamento Financeiro</strong></p>
-        <p>Use o código: <strong>IPTU15-CURSO</strong></p>
+        <p>Use o código: <strong>MAT15-CURSO</strong></p>
         <a
           href="https://dsop.com.br/marketplace/"
           target="_blank"

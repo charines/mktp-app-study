@@ -20,7 +20,7 @@ function App() {
   // Carrega dados do localStorage
   const carregarDadosDoStorage = () => {
     return {
-      valorIPTU: parseFloat(localStorage.getItem('valorIPTU')) || '',
+      valorMatEsc: parseFloat(localStorage.getItem('valorMatEsc')) || '',
       descontoVista: parseFloat(localStorage.getItem('descontoVista')) || '',
       jurosMensal: parseFloat(localStorage.getItem('jurosMensal')) || '',
       parcelas: parseInt(localStorage.getItem('parcelas'), 10) || '',
@@ -43,7 +43,7 @@ function App() {
   useEffect(() => {
     const storedData = carregarDadosDoStorage();
     const dadosCompletos =
-      storedData.valorIPTU &&
+      storedData.valorMatEsc &&
       storedData.descontoVista &&
       storedData.jurosMensal &&
       storedData.parcelas &&
@@ -72,7 +72,7 @@ function App() {
     }));
 
     const dadosCompletos =
-      novosDados.valorIPTU &&
+      novosDados.valorMatEsc &&
       novosDados.descontoVista &&
       novosDados.jurosMensal &&
       novosDados.parcelas &&

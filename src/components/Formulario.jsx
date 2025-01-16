@@ -3,7 +3,7 @@ import ModalForm from './ModalForm';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 function Formulario({ onCalcular, dadosIniciais, utmParams }) {
-  const [valorIPTU, setvalorIPTU] = useState('');
+  const [valorMatEsc, setvalorMatEsc] = useState('');
   const [descontoVista, setDescontoVista] = useState('');
   const [jurosMensal, setJurosMensal] = useState('');
   const [parcelas, setParcelas] = useState('');
@@ -12,7 +12,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
 
   useEffect(() => {
     // Prioriza dadosIniciais se fornecidos, senão utiliza valores do localStorage
-    setvalorIPTU(dadosIniciais?.valorIPTU || localStorage.getItem('valorIPTU') || '');
+    setvalorMatEsc(dadosIniciais?.valorMatEsc || localStorage.getItem('valorMatEsc') || '');
     setDescontoVista(dadosIniciais?.descontoVista || localStorage.getItem('descontoVista') || '');
     setJurosMensal(dadosIniciais?.jurosMensal || localStorage.getItem('jurosMensal') || '');
     setParcelas(dadosIniciais?.parcelas || localStorage.getItem('parcelas') || '');
@@ -38,18 +38,18 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   };
 
   const openModal = () => {
-    const valorIPTUNum = parseFloat(valorIPTU);
+    const valorMatEscNum = parseFloat(valorMatEsc);
     const descontoVistaNum = parseFloat(descontoVista);
     const jurosMensalNum = parseFloat(jurosMensal);
     const parcelasNum = parseInt(parcelas, 10);
 
-    if (!valorIPTU || !descontoVista || !jurosMensal || !parcelas) {
+    if (!valorMatEsc || !descontoVista || !jurosMensal || !parcelas) {
       alert('Por favor, preencha todos os campos antes de continuar.');
       return;
     }
 
-    if (valorIPTUNum < 100) {
-      alert('O valor do IPTU deve ser no mínimo R$ 100.');
+    if (valorMatEscNum < 100) {
+      alert('O valor do valor do material escolar deve ser no mínimo R$ 100.');
       return;
     }
 
@@ -77,22 +77,22 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
     <section className="py-8 bg-base-200">
       <div className="container mx-auto px-4 text-center max-w-md">
         <h2 className="text-2xl font-bold text-primary mb-4" id="questionario">
-          Preencha os Dados do IPTU
+          Preencha os dados do valor do material escolar
         </h2>
         <form className="space-y-4 w-full">
           <label className="form-control w-full">
-            <span className="label-text">Valor do IPTU (R$)</span>
+            <span className="label-text">Valor do material escolar (R$)</span>
             <input
               type="text"
-              value={valorIPTU}
-              onChange={(e) => handleNumericInput(e, setvalorIPTU, 'valorIPTU')}
+              value={valorMatEsc}
+              onChange={(e) => handleNumericInput(e, setvalorMatEsc, 'valorMatEsc')}
               className="input input-bordered w-full"
               min="100"
               required
             />
           </label>
           <label className="form-control w-full">
-            <span className="label-text">Desconto em %</span>
+            <span className="label-text">Desconto em % da compra à vista</span>
             <input
               type="text"
               value={descontoVista}
@@ -104,7 +104,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             />
           </label>
           <label className="form-control w-full">
-            <span className="label-text">Juros Mensais em %</span>
+            <span className="label-text">Juros Mensais em % de suas aplicações</span>
             <input
               type="text"
               value={jurosMensal}
@@ -116,7 +116,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             />
           </label>
           <label className="form-control w-full">
-            <span className="label-text">Quantidade de Parcelas</span>
+            <span className="label-text">Quantidade de parcelas</span>
             <input
               type="number"
               value={parcelas}
@@ -153,7 +153,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             onCalcular={() => {
               closeModal();
               onCalcular({
-                valorIPTU: parseFloat(valorIPTU),
+                valorMatEsc: parseFloat(valorMatEsc),
                 descontoVista: parseFloat(descontoVista),
                 jurosMensal: parseFloat(jurosMensal),
                 parcelas: parseInt(parcelas, 10),

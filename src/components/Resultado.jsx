@@ -13,10 +13,10 @@ function Resultado({ dados }) {
 
   useEffect(() => {
     // Verifica se os dados são válidos antes de calcular
-    if (dados.valorIPTU > 0 && dados.parcelas > 0 && dados.jurosMensal > 0) {
+    if (dados.valorMatEsc > 0 && dados.parcelas > 0 && dados.jurosMensal > 0) {
       const jurosCareme = calcularCareme(
-        dados.valorIPTU,
-        dados.valorIPTU / dados.parcelas,
+        dados.valorMatEsc,
+        dados.valorMatEsc / dados.parcelas,
         dados.jurosMensal,
         dados.parcelas
       );
@@ -26,7 +26,7 @@ function Resultado({ dados }) {
     }
 
     if (dados.descontoVista > 0 && dados.jurosMensal > 0 && dados.parcelas > 0) {
-      const valorDesconto = (dados.valorIPTU * dados.descontoVista) / 100;
+      const valorDesconto = (dados.valorMatEsc * dados.descontoVista) / 100;
       const valorFuturo = calcularInapum(valorDesconto, dados.jurosMensal, dados.parcelas);
       const jurosTotais = calcularInapumju(valorDesconto, dados.jurosMensal, dados.parcelas);
 
@@ -43,13 +43,13 @@ function Resultado({ dados }) {
       <div className="container mx-auto px-4">
         <div className="mt-6" id="resultado">
           <AnaliseInvestimento
-            valorIPTU={dados.valorIPTU}
+            valorMatEsc={dados.valorMatEsc}
             descontoVista={dados.descontoVista}
             jurosMensal={dados.jurosMensal}
             parcelas={dados.parcelas}
-            parcelaMensal={dados.valorIPTU / dados.parcelas}
+            parcelaMensal={dados.valorMatEsc / dados.parcelas}
             jurosTotaisAcumulados={careme}
-            valorDesconto={(dados.valorIPTU * dados.descontoVista) / 100}
+            valorDesconto={(dados.valorMatEsc * dados.descontoVista) / 100}
             valorFuturoTotal={inapun}
             jurosAcumulados={inapunju}
             clienteNome={dados.nome}
@@ -64,8 +64,8 @@ function Resultado({ dados }) {
             {/* Cálculo com Resgate Mensal */}
             <div className="mt-6">
               <InvestimentoComParcelas
-                valorInicial={dados.valorIPTU}
-                parcelaMensal={dados.valorIPTU / dados.parcelas}
+                valorInicial={dados.valorMatEsc}
+                parcelaMensal={dados.valorMatEsc / dados.parcelas}
                 taxaJuros={dados.jurosMensal}
                 meses={dados.parcelas}
                 jurosRecebidos={careme}
@@ -74,8 +74,8 @@ function Resultado({ dados }) {
             {/* Racional com Parcelas */}
             <div className="mt-6">
               <RacionalInvestimentoComParcelas
-                valorInicial={dados.valorIPTU}
-                parcelaMensal={dados.valorIPTU / dados.parcelas}
+                valorInicial={dados.valorMatEsc}
+                parcelaMensal={dados.valorMatEsc / dados.parcelas}
                 taxaJuros={dados.jurosMensal}
                 meses={dados.parcelas}
               />
@@ -86,7 +86,7 @@ function Resultado({ dados }) {
             {/* Cálculo com Aporte Único */}
             <div className="mt-6">
               <InvestimentoDesconto
-                valorDesconto={(dados.valorIPTU * dados.descontoVista) / 100}
+                valorDesconto={(dados.valorMatEsc * dados.descontoVista) / 100}
                 taxaJuros={dados.jurosMensal}
                 meses={dados.parcelas}
                 jurosAcumulados={inapunju}
@@ -96,7 +96,7 @@ function Resultado({ dados }) {
             {/* Racional com Aporte Único */}
             <div className="mt-6">
               <RacionalInvestimentoDesconto
-                valorDesconto={(dados.valorIPTU * dados.descontoVista) / 100}
+                valorDesconto={(dados.valorMatEsc * dados.descontoVista) / 100}
                 taxaJuros={dados.jurosMensal}
                 meses={dados.parcelas}
               />
