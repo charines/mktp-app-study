@@ -16,13 +16,14 @@ function EntendaMais() {
           }}
         >
         <iframe width="1920" height="1080" 
-          src="https://www.youtube.com/embed/tagJOZWBGes" 
-          title="IPVA e IPTU - Pagar à vista ou parcelado?" 
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
-        ></iframe>
+        src="https://www.youtube.com/embed/dm9pkpT58uw" 
+        title="IPTU - é fundamental saber PAGAR!" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+        allowfullscreen>          
+        </iframe>
         </div>
       </div>
       <p className="text-lg">

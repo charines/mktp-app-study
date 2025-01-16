@@ -1,7 +1,7 @@
-# LP-IPVA: Simulador de Cálculo de IPVA
+# LP-IPTU: Simulador de Cálculo de IPTU
 
 ## Descrição Geral
-Este é um projeto para a criação de uma landing page interativa chamada **LP-IPVA**, que oferece um simulador detalhado para ajudar os usuários a decidirem a melhor forma de pagar o Imposto sobre Propriedade de Veículos Automotores (IPVA). A solução apresenta comparações entre opções de pagamento à vista e parcelado, levando em consideração fatores como taxas de desconto e juros.
+Este é um projeto para a criação de uma landing page interativa chamada **LP-IPTU**, que oferece um simulador detalhado para ajudar os usuários a decidirem a melhor forma de pagar o Imposto sobre Propriedade de Veículos Automotores (IPTU). A solução apresenta comparações entre opções de pagamento à vista e parcelado, levando em consideração fatores como taxas de desconto e juros.
 
 ## Objetivo
 Proporcionar uma experiência educativa e interativa, permitindo ao usuário calcular o impacto financeiro de diferentes opções de pagamento e entender qual delas é mais vantajosa com base nos seus dados pessoais.
@@ -19,11 +19,11 @@ Proporcionar uma experiência educativa e interativa, permitindo ao usuário cal
 - Carrega os dados do `localStorage` e controla a exibição do resultado do simulador.
 
 ### 2. **Secao1.jsx**
-- Apresentação inicial do simulador, com botões para acessar o formulário e obter mais informações sobre o IPVA.
+- Apresentação inicial do simulador, com botões para acessar o formulário e obter mais informações sobre o IPTU.
 
 ### 3. **Formulario.jsx**
 - Formulário interativo para coleta de dados do usuário, como:
-  - Valor do IPVA
+  - Valor do IPTU
   - Percentual de desconto à vista
   - Taxa de juros mensal
   - Número de parcelas
@@ -51,7 +51,7 @@ Proporcionar uma experiência educativa e interativa, permitindo ao usuário cal
 - Apresenta cupons e descontos em produtos relacionados, como livros e cursos de educação financeira.
 
 ### 9. **EntendaMais.jsx**
-- Seção educativa com vídeos e conteúdos explicativos sobre a gestão financeira do IPVA.
+- Seção educativa com vídeos e conteúdos explicativos sobre a gestão financeira do IPTU.
 
 ### 10. **Rodape.jsx**
 - Contém links para redes sociais da empresa e mensagens de despedida.
@@ -66,13 +66,13 @@ Proporcionar uma experiência educativa e interativa, permitindo ao usuário cal
    - Inicie o servidor local com `npm start`.
 
 2. **Simulação**:
-   - Preencha o formulário inicial com os dados do IPVA.
+   - Preencha o formulário inicial com os dados do IPTU.
    - Insira os dados pessoais no modal que será exibido.
    - Veja os resultados detalhados e escolha a melhor opção de pagamento.
 
 3. **Exploração Adicional**:
    - Acesse as ofertas para descontos em produtos educativos.
-   - Assista ao vídeo explicativo para entender mais sobre IPVA.
+   - Assista ao vídeo explicativo para entender mais sobre IPTU.
 
 ## Funcionalidades Futuras
 - Integração com APIs financeiras para cálculos mais precisos.
@@ -84,5 +84,5 @@ Para mais informações, entre em contato com a equipe DSOP:
 - **E-mail**: charles.rodrigues@dsop.com.br
 
 
-Agradecemos por utilizar o **LP-IPVA**! 💡
+Agradecemos por utilizar o **LP-IPTU**! 💡
 

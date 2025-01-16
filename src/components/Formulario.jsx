@@ -3,7 +3,7 @@ import ModalForm from './ModalForm';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 function Formulario({ onCalcular, dadosIniciais, utmParams }) {
-  const [valorIPVA, setValorIPVA] = useState('');
+  const [valorIPTU, setvalorIPTU] = useState('');
   const [descontoVista, setDescontoVista] = useState('');
   const [jurosMensal, setJurosMensal] = useState('');
   const [parcelas, setParcelas] = useState('');
@@ -12,7 +12,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
 
   useEffect(() => {
     // Prioriza dadosIniciais se fornecidos, senão utiliza valores do localStorage
-    setValorIPVA(dadosIniciais?.valorIPVA || localStorage.getItem('valorIPVA') || '');
+    setvalorIPTU(dadosIniciais?.valorIPTU || localStorage.getItem('valorIPTU') || '');
     setDescontoVista(dadosIniciais?.descontoVista || localStorage.getItem('descontoVista') || '');
     setJurosMensal(dadosIniciais?.jurosMensal || localStorage.getItem('jurosMensal') || '');
     setParcelas(dadosIniciais?.parcelas || localStorage.getItem('parcelas') || '');
@@ -38,18 +38,18 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   };
 
   const openModal = () => {
-    const valorIPVANum = parseFloat(valorIPVA);
+    const valorIPTUNum = parseFloat(valorIPTU);
     const descontoVistaNum = parseFloat(descontoVista);
     const jurosMensalNum = parseFloat(jurosMensal);
     const parcelasNum = parseInt(parcelas, 10);
 
-    if (!valorIPVA || !descontoVista || !jurosMensal || !parcelas) {
+    if (!valorIPTU || !descontoVista || !jurosMensal || !parcelas) {
       alert('Por favor, preencha todos os campos antes de continuar.');
       return;
     }
 
-    if (valorIPVANum < 100) {
-      alert('O valor do IPVA deve ser no mínimo R$ 100.');
+    if (valorIPTUNum < 100) {
+      alert('O valor do IPTU deve ser no mínimo R$ 100.');
       return;
     }
 
@@ -77,15 +77,15 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
     <section className="py-8 bg-base-200">
       <div className="container mx-auto px-4 text-center max-w-md">
         <h2 className="text-2xl font-bold text-primary mb-4" id="questionario">
-          Preencha os Dados do IPVA
+          Preencha os Dados do IPTU
         </h2>
         <form className="space-y-4 w-full">
           <label className="form-control w-full">
             <span className="label-text">Valor do IPTU (R$)</span>
             <input
               type="text"
-              value={valorIPVA}
-              onChange={(e) => handleNumericInput(e, setValorIPVA, 'valorIPVA')}
+              value={valorIPTU}
+              onChange={(e) => handleNumericInput(e, setvalorIPTU, 'valorIPTU')}
               className="input input-bordered w-full"
               min="100"
               required
@@ -153,7 +153,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             onCalcular={() => {
               closeModal();
               onCalcular({
-                valorIPVA: parseFloat(valorIPVA),
+                valorIPTU: parseFloat(valorIPTU),
                 descontoVista: parseFloat(descontoVista),
                 jurosMensal: parseFloat(jurosMensal),
                 parcelas: parseInt(parcelas, 10),
