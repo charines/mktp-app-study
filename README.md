@@ -1,9 +1,9 @@
-# LP-IPVA: Simulador de Cálculo de IPVA
+# LP-IPTU: Simulador de Cálculo de IPTU
 
 ## Descrição Geral
-Este é um projeto para a criação de uma landing page interativa chamada **LP-IPVA**, que oferece um simulador detalhado para ajudar os usuários a decidirem a melhor forma de pagar o Imposto sobre Propriedade de Veículos Automotores (IPVA). A solução apresenta comparações entre opções de pagamento à vista e parcelado, levando em consideração fatores como taxas de desconto e juros.
+Este é um projeto para a criação de uma landing page interativa chamada **LP-IPTU**, que oferece um simulador detalhado para ajudar os usuários a decidirem a melhor forma de pagar o Imposto sobre Propriedade de Veículos Automotores (IPTU). A solução apresenta comparações entre opções de pagamento à vista e parcelado, levando em consideração fatores como taxas de desconto e juros.
 
-[Confira mais detalhes neste arquivo](lp-ipva.md)
+[Confira mais detalhes neste arquivo](lp-iptu.md)
 
 
 

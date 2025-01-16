@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 function AnaliseInvestimento({
-  valorIPVA,
+  valorIPTU,
   descontoVista,
   jurosMensal,
   parcelas,
@@ -21,7 +21,7 @@ function AnaliseInvestimento({
   }, []);
 
   // Garantir que os valores principais sejam números válidos
-  const valorIPVANum = parseFloat(valorIPVA) || 0;
+  const valorIPTUNum = parseFloat(valorIPTU) || 0;
   const descontoVistaNum = parseFloat(descontoVista) || 0;
   const jurosMensalNum = parseFloat(jurosMensal) || 0;
   const parcelasNum = parseInt(parcelas, 10) || 0;
@@ -31,7 +31,7 @@ function AnaliseInvestimento({
   const valorFuturoTotalNum = parseFloat(valorFuturoTotal) || 0;
   const jurosAcumuladosNum = parseFloat(jurosAcumulados) || 0;
 
-  if (!valorIPVANum || !descontoVistaNum || !jurosMensalNum || !parcelasNum) {
+  if (!valorIPTUNum || !descontoVistaNum || !jurosMensalNum || !parcelasNum) {
     return <p className="text-red-500">Dados insuficientes para análise.</p>;
   }
 
@@ -42,7 +42,7 @@ function AnaliseInvestimento({
 
   const handleReset = () => {
     // Remove os dados do localStorage
-    localStorage.removeItem('valorIPVA');
+    localStorage.removeItem('valorIPTU');
     localStorage.removeItem('descontoVista');
     localStorage.removeItem('jurosMensal');
     localStorage.removeItem('parcelas');
@@ -61,7 +61,7 @@ function AnaliseInvestimento({
       <section className="mb-6">
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong>Valor do IPTU:</strong> R$ {valorIPVANum.toFixed(2)}
+            <strong>Valor do IPTU:</strong> R$ {valorIPTUNum.toFixed(2)}
           </li>
           <li>
             <strong>Desconto para pagamento à vista:</strong> {descontoVistaNum.toFixed(2)}% 

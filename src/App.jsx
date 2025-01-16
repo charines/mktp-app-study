@@ -20,7 +20,7 @@ function App() {
   // Carrega dados do localStorage
   const carregarDadosDoStorage = () => {
     return {
-      valorIPVA: parseFloat(localStorage.getItem('valorIPVA')) || '',
+      valorIPTU: parseFloat(localStorage.getItem('valorIPTU')) || '',
       descontoVista: parseFloat(localStorage.getItem('descontoVista')) || '',
       jurosMensal: parseFloat(localStorage.getItem('jurosMensal')) || '',
       parcelas: parseInt(localStorage.getItem('parcelas'), 10) || '',
@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const utm_source = params.get('utm_source') || 'site-dsop';
-    const responsavel_pelo_lead = params.get('responsavel_pelo_lead') || 'kaue.ferreira';
+    const responsavel_pelo_lead = params.get('slug') || 'kaue.ferreira';
   
     setUtmParams({ utm_source, responsavel_pelo_lead });
   }, []);
@@ -43,7 +43,7 @@ function App() {
   useEffect(() => {
     const storedData = carregarDadosDoStorage();
     const dadosCompletos =
-      storedData.valorIPVA &&
+      storedData.valorIPTU &&
       storedData.descontoVista &&
       storedData.jurosMensal &&
       storedData.parcelas &&
@@ -72,7 +72,7 @@ function App() {
     }));
 
     const dadosCompletos =
-      novosDados.valorIPVA &&
+      novosDados.valorIPTU &&
       novosDados.descontoVista &&
       novosDados.jurosMensal &&
       novosDados.parcelas &&
