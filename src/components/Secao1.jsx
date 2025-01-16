@@ -11,7 +11,7 @@ function Secao1() {
     window.location.hash = '#questionario';
   
     // Remove os dados do localStorage
-    localStorage.removeItem('valorIPTU');
+    localStorage.removeItem('valorMatEsc');
     localStorage.removeItem('descontoVista');
     localStorage.removeItem('jurosMensal');
     localStorage.removeItem('parcelas');
@@ -46,7 +46,7 @@ const scrollToSection = (sectionId) => {
         </div>
         {/* Título */}
         <h1 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
-          Simulador de IPTU
+          Simulador de Comparativo material escolar
         </h1>
         {/* Descrição */}
         <p className="text-sm md:text-lg mb-6 drop-shadow-md">
@@ -54,12 +54,12 @@ const scrollToSection = (sectionId) => {
         </p>
         {/* Botões Informativos */}
         <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-4 mt-6">
-          {/* Botão 1: O que é IPTU */}
+          {/* Botão 1: O que é material escolar */}
           <button
             onClick={() => setIsModalOpen(true)}
             className="btn btn-primary text-sm md:text-base px-4 py-2 w-full md:w-auto"
           >
-            O que é o IPTU?
+            O que é o material escolar?
           </button>
           
           {/* Botão 2: Simule Agora */}
@@ -70,12 +70,12 @@ const scrollToSection = (sectionId) => {
             Simular Agora
           </button>
           
-      {/* Botão 3: Como Calcular o seu IPTU */}
+      {/* Botão 3: Como Calcular o seu material escolar */}
       <button
         onClick={() => scrollToSection('entendamais')}
         className="btn btn-accent text-sm md:text-base px-4 py-2 w-full md:w-auto"
       >
-        Como Pagar o seu IPTU
+        Como Pagar o seu material escolar
       </button>
 
 
@@ -86,16 +86,16 @@ const scrollToSection = (sectionId) => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 px-4">
           <div className="bg-white text-black rounded-lg p-6 max-w-lg w-full relative">
-            <h2 className="text-xl font-bold mb-4">O que é IPTU?</h2>
+            <h2 className="text-xl font-bold mb-4">O que é material escolar?</h2>
             <p className="text-sm mb-4">
-            O IPTU (Imposto sobre a Propriedade Predial e Territorial Urbana) é um imposto municipal cobrado anualmente dos proprietários de imóveis em áreas urbanas, como casas, apartamentos e salas comerciais. O valor varia conforme a avaliação do imóvel e a arrecadação é destinada a melhorias no município, como infraestrutura e serviços públicos. O pagamento é responsabilidade do proprietário, mas pode ser feito pelo locatário se estiver previsto no contrato de aluguel. Cada cidade define suas condições de pagamento, podendo oferecer descontos para quem pagar à vista.            </p>
+            No início de cada ano, as famílias enfrentam a necessidade de adquirir materiais escolares para seus filhos, o que pode representar um grande gasto. A compra de itens essenciais como cadernos, mochilas, lápis, canetas e outros materiais necessários para o bom desempenho na escola, muitas vezes é uma das maiores despesas de início de ano. Diante disso, a organização financeira e a pesquisa de preços se tornam fundamentais para que as famílias consigam equilibrar o orçamento sem comprometer outras necessidades.</p>
             <a
-              href="https://www.serasa.com.br/blog/iptu-o-que-e-quem-tem-que-pagar/"
+              href="https://dsop.com.br/como-economizar-material-escolar"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline"
             >
-              Saiba mais sobre o IPTU
+              Saiba mais sobre Material Escolar
             </a>
             <button
               onClick={() => setIsModalOpen(false)}
