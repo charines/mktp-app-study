@@ -9,6 +9,8 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
   const [parcelas, setParcelas] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [hasRecaptcha, setHasRecaptcha] = useState('');
+  // Determine the environment and access the environment variable accordingly
+  const siteKey = import.meta.env ? import.meta.env.VITE_APP_SITE_KEY : process.env.REACT_APP_SITE_KEY;
 
   useEffect(() => {
     // Prioriza dadosIniciais se fornecidos, senão utiliza valores do localStorage
@@ -129,7 +131,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
           </label>
           <ReCAPTCHA
             className='flex justify-center'
-            sitekey={import.meta.env.VITE_APP_SITE_KEY}
+            sitekey={siteKey}
             onChange={(value) => setHasRecaptcha(value)}
           />
           {hasRecaptcha 
