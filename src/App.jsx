@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const utm_source = params.get('utm_source') || 'site-dsop';
-    const responsavel_pelo_lead = params.get('responsavel_pelo_lead') || 'kaue.ferreira';
+    const responsavel_pelo_lead = params.get('slug') || 'kaue.ferreira';
   
     setUtmParams({ utm_source, responsavel_pelo_lead });
   }, []);
