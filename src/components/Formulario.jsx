@@ -92,7 +92,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             />
           </label>
           <label className="form-control w-full">
-            <span className="label-text">Desconto em %</span>
+            <span className="label-text">Desconto em % da compra à vista</span>
             <input
               type="text"
               value={descontoVista}
@@ -104,7 +104,7 @@ function Formulario({ onCalcular, dadosIniciais, utmParams }) {
             />
           </label>
           <label className="form-control w-full">
-            <span className="label-text">Juros Mensais em %</span>
+            <span className="label-text">Juros Mensais em % de suas aplicações</span>
             <input
               type="text"
               value={jurosMensal}
